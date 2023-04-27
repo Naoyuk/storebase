@@ -1,0 +1,36 @@
+require:
+  - rubocop-rails
+
+AllCops:
+  Exclude:
+    - '**/db/migrate/*'
+    - 'db/schema.rb'
+    - '**/Gemfile.lock'
+    - '**/Rakefile'
+    - '**/rails'
+    - '**/vendor/**/*'
+    - '**/spec_helper.rb'
+    - 'node_modules/**/*'
+    - 'bin/*'
+    - 'config/initializers/devise.rb'
+
+Metrics:
+  Enabled: false
+
+Style:
+  Enabled: false
+
+Layout/LineLength:
+  Enabled: false
+
+Layout/SpaceAroundOperators:
+  Exclude:
+    - "spec/**/*_spec.rb"
+
+Layout/SpaceInsideHashLiteralBraces:
+  Exclude:
+    - "spec/**/*_spec.rb"
+
+Layout/HashAlignment:
+  Exclude:
+    - "spec/**/*_spec.rb"
