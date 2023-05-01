@@ -10,36 +10,11 @@
               Dashboard
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file" class="align-text-bottom"></span>
-              Orders
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="shopping-cart" class="align-text-bottom"></span>
-              Products
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="users" class="align-text-bottom"></span>
-              Customers
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-              Reports
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="layers" class="align-text-bottom"></span>
-              Integrations
-            </a>
-          </li>
+          <% @features.each do |feature| %>
+            <li class="nav-link">
+              <%= feature_link_to(feature.url, feature.emoji, feature.name) %>
+            </li>
+          <% end %>
         </ul>
 
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-body-secondary text-uppercase">

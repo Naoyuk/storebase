@@ -6,5 +6,6 @@ class SiteController < ApplicationController
   end
 
   def dashboard
+    @features = current_user.features.all
   end
 end
