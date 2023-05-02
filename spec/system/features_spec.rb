@@ -19,9 +19,9 @@ RSpec.describe "Features", type: :system do
     click_button 'Log in'
 
     visit '/dashboard'
-    expect(page).to have_content feature1.name
-    expect(page).to have_content feature2.name
-    expect(page).not_to have_content feature3.name
-    expect(page).not_to have_content feature4.name
+    expect(page).to have_content feature1.service.name
+    expect(page).to have_content feature2.service.name
+    expect(page).not_to have_content feature3.service.name
+    expect(page).not_to have_content feature4.service.name
   end
 end

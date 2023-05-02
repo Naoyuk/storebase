@@ -12,7 +12,7 @@
           </li>
           <% @features.each do |feature| %>
             <li class="nav-item">
-              <%= feature_link_to(feature.url, feature.emoji, feature.name) %>
+              <%= feature_link_to(feature.service.url, feature.service.icon, feature.service.name) %>
             </li>
           <% end %>
         </ul>

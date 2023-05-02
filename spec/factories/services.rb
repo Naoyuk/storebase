@@ -1,6 +1,8 @@
 FactoryBot.define do
   factory :service do
-    name { "test service" }
+    sequence(:name) { |n| "test#{n} service" }
+    sequence(:url) { |n| "test#{n} url" }
+    sequence(:icon) { |n| "test#{n} icon" }
     association :platform
   end
 end
