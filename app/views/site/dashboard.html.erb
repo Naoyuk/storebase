@@ -11,7 +11,7 @@
             </a>
           </li>
           <% @features.each do |feature| %>
-            <li class="nav-link">
+            <li class="nav-item">
               <%= feature_link_to(feature.url, feature.emoji, feature.name) %>
             </li>
           <% end %>
