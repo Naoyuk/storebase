@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :platform do
-    name { "test platform" }
+    sequence(:name) { |n| "test#{n} platform" }
   end
 end
