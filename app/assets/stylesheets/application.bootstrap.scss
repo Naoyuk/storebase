@@ -3,6 +3,7 @@
 
 body {
   font-size: .875rem;
+  background-color: #f5f5f5;
 }
 
 .feather {
@@ -92,4 +93,38 @@ body {
 .form-control-dark:focus {
   border-color: transparent;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+}
+
+/*
+ * Login Box
+ */
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+}
+
+.form-signin .first-input {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin .mid-input {
+  margin-bottom: -1px;
+  border-radius: 0;
+}
+
+.form-signin .last-input {
+  margin-top: -1px;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.error-messages {
+  max-width: 700px;
+}
+
+#error_explanation li {
+  color: red;
 }
