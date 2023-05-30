@@ -14,12 +14,12 @@ module SiteHelper
     @features.each do |f|
       pf = f.service.platform
       if prev_pf.nil?
-        res << tag.li(pf.name, class: "platform")
+        res << tag.li(pf.name, class: "platform p-2")
       elsif prev_pf != pf.id
-        res << tag.li(pf.name, class: "platform")
+        res << tag.li(pf.name, class: "platform p-2")
       end
       prev_pf = pf.id
-      res << tag.li(feature_link_to(f.service.url, f.service.icon, f.service.name))
+      res << tag.li(feature_link_to("#{f.service.platform.name.downcase}-#{f.service.url}", f.service.icon, f.service.name))
     end
     res
   end
