@@ -5,6 +5,8 @@ class SiteController < ApplicationController
 
   def home; end
 
+  def profile; end
+
   def dashboard
     @features = current_user.features.all
     platforms = []

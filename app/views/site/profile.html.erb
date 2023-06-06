@@ -1,0 +1,25 @@
+<main class="form-signin w-100 m-auto">
+  <h2 class="h3 mb-3 fw-normal"><%= current_user.user_name.to_s.humanize %></h2>
+
+  <div>
+    <h3>User Name</h3>
+    <%= current_user.user_name %>
+  </div>
+
+  <div>
+    <h3>Email Address</h3>
+    <%= current_user.email %>
+  </div>
+
+  <div>
+    <h3>Name</h3>
+    <%= "#{current_user.first_name} #{current_user.last_name}" %>
+  </div>
+
+  <div>
+    <%= image_tag current_user.avatar.url, alt: 'mdo', size: '200x200', class: 'rounded-circle' %>
+  </div>
+
+  <%= link_to "Edit", edit_user_registration_path, class: "btn btn-lg btn-warning" %>
+</main>
+
