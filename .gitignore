@@ -21,6 +21,9 @@
 
 /public/assets
 
+ # Ignore uploaded Avatar images
+/public/uploads
+
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
