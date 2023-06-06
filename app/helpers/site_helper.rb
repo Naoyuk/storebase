@@ -8,10 +8,10 @@ module SiteHelper
     end
   end
 
-  def dashboard_features
+  def dashboard_features(features)
     res = []
     prev_pf = nil
-    @features.each do |f|
+    features.each do |f|
       pf = f.service.platform
       if prev_pf.nil?
         res << tag.li(pf.name, class: "platform p-2")

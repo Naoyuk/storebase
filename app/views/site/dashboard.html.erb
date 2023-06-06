@@ -3,7 +3,7 @@
     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-body-tertiary sidebar collapse">
       <div class="position-sticky pt-3 sidebar-sticky">
         <ul class="nav flex-column">
-          <% dashboard_features.each do |li| %>
+          <% dashboard_features(@features).each do |li| %>
             <%= li %>
           <% end %>
         </ul>
