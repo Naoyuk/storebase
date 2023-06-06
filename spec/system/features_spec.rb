@@ -34,9 +34,9 @@ RSpec.describe "Features", type: :system do
     platform1 = FactoryBot.create(:platform, name: 'platform1')
     platform2 = FactoryBot.create(:platform, name: 'platform2')
     service = FactoryBot.create(:service, platform_id: platform1.id)
-    feature1 = FactoryBot.create(:feature, service_id: service.id, user_id: user.id)
-    feature2 = FactoryBot.create(:feature, service_id: service.id, user_id: user.id)
-    feature3 = FactoryBot.create(:feature, service_id: service.id, user_id: user.id)
+    FactoryBot.create(:feature, service_id: service.id, user_id: user.id)
+    FactoryBot.create(:feature, service_id: service.id, user_id: user.id)
+    FactoryBot.create(:feature, service_id: service.id, user_id: user.id)
 
     visit '/dashboard'
     expect(page).to have_content(platform1.name, count: 1)
