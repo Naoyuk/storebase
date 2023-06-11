@@ -60,7 +60,7 @@ RSpec.describe "Mappings", type: :request do
     end
   end
 
-  describe "GET /destroy" do
+  describe "DELETE /destroy" do
     it "destroy the requested mapping data" do
       mapping_to_delete = FactoryBot.create(:mapping, feature: feature)
       expect {
