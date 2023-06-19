@@ -13,9 +13,18 @@
 
   <body>
     <%= render 'shared/nav' %>
-    <div class='container'>
-      <%= render 'shared/flash' %>
-      <%= yield %>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-2">
+          <%= render 'shared/dashboard' %>
+        </div>
+        <div class="col-10">
+          <% if flash.any? %>
+            <%= render 'shared/flash' %>
+          <% end %>
+          <%= yield %>
+        </div>
+      </div>
     </div>
   </body>
 </html>

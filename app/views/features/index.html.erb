@@ -1,2 +1,14 @@
-<h1>Mappings#index</h1>
-<p>Find me in app/views/mappings/index.html.erb</p>
+<h1>Features</h1>
+
+<%= link_to 'Add Feature', new_feature_path %>
+
+<table>
+  <tr>
+    <th>Service ID</th>
+    <th>Service Name</th>
+    <th>Platform</th>
+    <th colspan="3"></th>
+  </tr>
+
+  <%= render @features %>
+</table>
