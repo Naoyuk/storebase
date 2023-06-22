@@ -84,6 +84,11 @@ body {
   padding: .75rem 1rem;
 }
 
+.text-bg-orange {
+    color: #fff !important;
+    background-color: RGBA(252, 186, 3, var(--bs-bg-opacity, 1)) !important;
+}
+
 .form-control-dark {
   color: #fff;
   background-color: rgba(255, 255, 255, .1);
@@ -127,4 +132,36 @@ body {
 
 #error_explanation li {
   color: red;
+}
+
+.feature-title {
+  padding: 2px 5px;
+  margin: 10px 0;
+  border-left: 3px solid #fcba03;
+  font-size: 1.5em;
+}
+
+.mapping-list {
+  padding: 20px;
+
+  .mapping-item {
+    list-style: none;
+    border: 1px solid #eee;
+
+    .user-column {
+      padding: 5px;
+      border-right: 1px solid #eee;
+
+    }
+
+    .ec-column {
+      padding: 5px;
+      border-right: 1px solid #eee;
+
+    }
+
+    .data-type {
+      padding: 5px;
+    }
+  }
 }

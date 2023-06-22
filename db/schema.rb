@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_04_053729) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_08_004105) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,6 +21,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_04_053729) do
     t.bigint "service_id"
     t.index ["service_id"], name: "index_features_on_service_id"
     t.index ["user_id"], name: "index_features_on_user_id"
+  end
+
+  create_table "mappings", force: :cascade do |t|
+    t.bigint "feature_id", null: false
+    t.string "user_column"
+    t.string "ec_column"
+    t.integer "data_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["feature_id"], name: "index_mappings_on_feature_id"
   end
 
   create_table "platforms", force: :cascade do |t|
@@ -70,5 +80,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_04_053729) do
 
   add_foreign_key "features", "services"
   add_foreign_key "features", "users"
+  add_foreign_key "mappings", "features"
   add_foreign_key "services", "platforms"
 end

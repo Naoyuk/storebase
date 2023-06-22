@@ -1,0 +1,36 @@
+<div class="feature-title">
+  <%= @feature.service.platform.name %> | 
+  <%= @feature.service.name %>
+</div>
+
+<%= form_with(model: [ @feature, Mapping.new ], remote: true) do |f| %>
+  <%= f.label :user_column, "Your DB's column name" %>
+  <%= f.text_field :user_column, class: "form-control" %>
+
+  <%= f.label :ec_column, "EC site's column name" %>
+  <%= f.text_field :ec_column, class: "form-control" %>
+
+  <%= f.label :data_type, "Data Type" %>
+  <%= f.select :data_type, Mapping.data_types.keys.map { |k| [k.humanize, k] }, include_blank: 'Select Data Type', class: "form-control" %>
+
+  <%= f.submit 'Add' %>
+<% end %>
+
+<div class="card shadow mt-3">
+  <div class="card-header">Data Mappings</div>
+
+  <div class="card-body mx-3">
+    <div class="row py-2">
+      <div class="col mt-auto">Your DB's column name</div>
+      <div class="col mt-auto">EC site's column name</div>
+      <div class="col mt-auto">Data Type</div>
+    </div>
+
+    <div id='mappings'>
+      <%= render partial: 'features/mapping', collection: @feature.mappings %>
+    </div>
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_feature_path(@feature) %> |
+<%= link_to 'Back', features_path %>
