@@ -1,4 +1,5 @@
 class FeaturesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_feature, only: [:show, :edit, :update, :destroy]
   before_action :set_features_and_platforms, only:[:index, :show, :edit, :new]
 
@@ -9,6 +10,12 @@ class FeaturesController < ApplicationController
     @feature = Feature.new
   end
 
+  def edit
+  end
+
+  def show
+  end
+
   def create
     @feature = Feature.new(feature_params)
     @feature.user_id = current_user.id
@@ -17,9 +24,6 @@ class FeaturesController < ApplicationController
     else
       render :new
     end
-  end
-
-  def edit
   end
 
   def update

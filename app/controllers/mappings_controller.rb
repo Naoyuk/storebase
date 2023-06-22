@@ -1,5 +1,6 @@
 class MappingsController < ApplicationController
   before_action :set_feature
+  before_action :set_features, only:[:index, :show, :edit, :new]
   before_action :set_mapping, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -19,7 +20,7 @@ class MappingsController < ApplicationController
   def create
     @mapping = @feature.mappings.new(mapping_params)
     if @mapping.save
-      redirect_to feature_mappings_path(@feature)
+      redirect_to feature_path(@feature)
     else
       render :new
     end
@@ -43,6 +44,10 @@ class MappingsController < ApplicationController
 
   def set_feature
     @feature = Feature.find(params[:feature_id])
+  end
+
+  def set_features
+    @features = current_user.features.order_by_platform
   end
 
   def set_mapping
