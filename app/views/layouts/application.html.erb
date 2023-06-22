@@ -15,15 +15,24 @@
     <%= render 'shared/nav' %>
     <div class="container-fluid">
       <div class="row">
-        <div class="col-2">
-          <%= render 'shared/dashboard' %>
-        </div>
-        <div class="col-10">
-          <% if flash.any? %>
-            <%= render 'shared/flash' %>
-          <% end %>
-          <%= yield %>
-        </div>
+        <% if user_signed_in? %>
+          <div class="col-2">
+            <%= render 'shared/dashboard' %>
+          </div>
+          <div class="col-10">
+            <% if flash.any? %>
+              <%= render 'shared/flash' %>
+            <% end %>
+            <%= yield %>
+          </div>
+        <% else %>
+          <div>
+            <% if flash.any? %>
+              <%= render 'shared/flash' %>
+            <% end %>
+            <%= yield %>
+          </div>
+        <% end %>
       </div>
     </div>
   </body>

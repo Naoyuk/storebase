@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root "features#index"
-  devise_for :users, controllers: { registrations: 'users/registrations' }
+  devise_for :users
 
   get "site/index"
   get "/home", to: "site#home"
