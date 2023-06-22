@@ -7,12 +7,5 @@ class SiteController < ApplicationController
 
   def profile; end
 
-  def dashboard
-    @features = current_user.features.all
-    platforms = []
-    @features.each do |f|
-      platforms << f.service.platform
-    end
-    @platforms = platforms.uniq
-  end
+  def dashboard; end
 end

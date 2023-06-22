@@ -1,0 +1,15 @@
+<div class="row row-cols-4 py-2 border-top">
+  <div class="col-3 my-auto">
+    <%= feature.service_id %>
+  </div>
+  <div class="col-3 my-auto">
+    <%= feature.service.name %>
+  </div>
+  <div class="col-3 my-auto">
+    <%= feature.service.platform.name %>
+  </div>
+  <div class="col-3 my-auto">
+    <%= link_to 'Show', feature_path(feature) %> | 
+    <%= link_to 'Delete', feature_path(feature), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+  </div>
+</div>
