@@ -17,13 +17,13 @@ RSpec.describe "Mappings", type: :system do
 
     visit feature_path(feature)
 
-    expect{
+    expect {
       fill_in 'mapping_user_column', with: 'new user column'
       fill_in 'mapping_ec_column', with: 'new ec column'
       select 'String', from: 'mapping_data_type'
       click_button 'Add'
     }.to change(Mapping, :count).by(1)
-    
+
     expect(page).to have_content 'new user column'
     expect(page).to have_content 'new ec column'
     expect(page).to have_content 'String'

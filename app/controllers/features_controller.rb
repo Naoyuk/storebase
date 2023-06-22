@@ -1,7 +1,7 @@
 class FeaturesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_feature, only: [:show, :edit, :update, :destroy]
-  before_action :set_features_and_platforms, only:[:index, :show, :edit, :new]
+  before_action :set_features_and_platforms, only: [:index, :show, :edit, :new]
 
   def index
   end

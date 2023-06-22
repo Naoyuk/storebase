@@ -1,6 +1,6 @@
 class MappingsController < ApplicationController
   before_action :set_feature
-  before_action :set_features, only:[:index, :show, :edit, :new]
+  before_action :set_features, only: [:index, :show, :edit, :new]
   before_action :set_mapping, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -24,7 +24,6 @@ class MappingsController < ApplicationController
     else
       render :new
     end
-
   end
 
   def update
