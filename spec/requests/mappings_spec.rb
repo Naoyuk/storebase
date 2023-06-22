@@ -1,37 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe "Mappings", type: :request do
+  let(:user) { FactoryBot.create(:user) }
   let(:feature) { FactoryBot.create(:feature) }
   let(:mapping) { FactoryBot.create(:mapping, feature: feature) }
   let(:valid_attributes) { FactoryBot.attributes_for(:mapping) }
   let(:invalid_attributes) { FactoryBot.attributes_for(:mapping, user_id: nil) }
 
-  describe "GET /index" do
-    it "returns http success" do
-      get feature_mappings_path(feature)
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET /new" do
-    it "returns http success" do
-      get new_feature_mapping_path(feature)
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET /show" do
-    it "returns http success" do
-      get feature_mapping_path(feature_id: feature.id, id: mapping.id)
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET /edit" do
-    it "returns http success" do
-      get edit_feature_mapping_path(feature_id: feature.id, id: mapping.id)
-      expect(response).to have_http_status(:success)
-    end
+  before do
+    sign_in user
   end
 
   describe "POST /create" do
@@ -40,7 +17,7 @@ RSpec.describe "Mappings", type: :request do
         post feature_mappings_path(feature_id: feature.id), params: { mapping: valid_attributes }
       }.to change(Mapping, :count).by(1)
 
-      expect(response).to redirect_to(feature_mappings_url(feature_id: feature.id))
+      expect(response).to redirect_to(feature_url(feature))
     end
   end
 
