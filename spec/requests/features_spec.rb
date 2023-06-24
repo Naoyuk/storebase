@@ -4,20 +4,13 @@ RSpec.describe "Features", type: :request do
   let(:user) { FactoryBot.create(:user) }
   let(:service) { FactoryBot.create(:service) }
   let(:feature) { FactoryBot.create(:feature) }
+  let(:user_feature) { FactoryBot.create(:feature, user: user) }
   let(:valid_attributes) { { service_id: service.id } }
   let(:invalid_attributes) { FactoryBot.attributes_for(:feature, service_id: nil) }
-
-  def sign_in(user)
-    post user_session_path, params: {
-      user: {
-        email: user.email,
-        password: user.password
-      }
-    }
-  end
+  let(:csv_file) { fixture_file_upload('input.csv', 'text/csv') }
 
   before do
-    sign_in(user)
+    sign_in user
   end
 
   describe "GET /index" do
@@ -108,6 +101,22 @@ RSpec.describe "Features", type: :request do
       }.to change(Feature, :count).by(-1)
 
       expect(response).to redirect_to(features_url)
+    end
+  end
+
+  describe "POST /convert" do
+    context 'when the uploaded file and selection of feature are correct' do
+      it "converts the uploaded csv file and returns the converted file" do
+        post convert_feature_path(user_feature.id), params: { csv_file: csv_file, feature_id: user_feature.id }
+        expect(response).to have_http_status(:success)
+      end
+    end
+
+    context 'when the uploaded file is missing' do
+      it "redirect to converter page" do
+        post convert_feature_path(user_feature.id), params: { csv_file: nil, feature_id: user_feature.id }
+        expect(response).to have_http_status(302)
+      end
     end
   end
 end
