@@ -39,6 +39,34 @@ class FeaturesController < ApplicationController
     redirect_to features_path
   end
 
+  def converter
+  end
+
+  def convert
+    if params[:feature_id].nil?
+      flash[:alert] = 'Please choose a target service.'
+      return redirect_to converter_path
+    else
+      @feature = Feature.find(params[:feature_id])
+    end
+
+    if params[:csv_file]
+      input_file_path = params[:csv_file].path
+      # @feature.convert_csv(input_file_path)は成功したかどうかのboolとcsvファイルまたはエラーの配列を返す
+      # 多重代入によりsuccessにtrueやfalse、resultに"path/to/converted/file.csv"や"Error message describing what went wrong"といった値が入る
+      success, result = @feature.convert_csv(input_file_path)
+      if success
+        send_file result, type: 'text/csv', filename: 'output.csv', disposition: 'attachment'
+      else
+        flash[:alert] = result.join(', ')
+        return redirect_to converter_path
+      end
+    else
+      flash[:alert] = 'Please upload a csv file.'
+      redirect_to converter_path
+    end
+  end
+
   private
 
   def set_feature
