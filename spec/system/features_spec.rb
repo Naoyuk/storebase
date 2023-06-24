@@ -1,8 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "Features", type: :system do
+RSpec.describe "Features", type: :system, js: true do
   let(:user) { FactoryBot.create(:user) }
   let(:another_user) { FactoryBot.create(:user) }
+  let(:feature) { FactoryBot.create(:feature, user: user) }
 
   before do
     driven_by(:rack_test)
@@ -65,5 +66,36 @@ RSpec.describe "Features", type: :system do
     expect(page).to have_content(mapping3.ec_column)
     expect(page).not_to have_content(mapping2.user_column)
     expect(page).not_to have_content(mapping2.ec_column)
+  end
+
+  describe "Convert CSV" do
+    scenario "converts the uploaded csv file and downloads the converted file" do
+      feature = FactoryBot.create(:feature, user: user)
+      visit converter_path
+      select feature.service_name, from: 'feature_id'
+      attach_file("csv_file", 'spec/fixtures/files/input.csv')
+      click_button "Convert"
+
+      expect(page.response_headers['Content-Disposition']).to include("attachment; filename=\"output.csv\"")
+    end
+
+    scenario "raise error when a user doesn't choose a Feature with select box" do
+      # ログインユーザーのFeatureが1つでもあるとformのactionにそのidがセットされるので、わざと別のユーザーのFeatureとして作成（Featureの作成自体しなくても可） 
+      feature = FactoryBot.create(:feature, user: another_user)
+      visit converter_path
+      attach_file("csv_file", 'spec/fixtures/files/input.csv')
+      click_button "Convert"
+
+      expect(page).to have_content 'Please choose a target service.'
+    end
+
+    scenario "raise error when a user doesn't set an upload file" do
+      feature = FactoryBot.create(:feature, user: user)
+      visit converter_path
+      select feature.service_name, from: 'feature_id'
+      click_button "Convert"
+
+      expect(page).to have_content 'Please upload a csv file.'
+    end
   end
 end

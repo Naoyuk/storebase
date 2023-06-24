@@ -1,0 +1,16 @@
+<%= form_with(url: convert_feature_path(id: 0, format: :csv), method: :post, id: 'csv_convert_form') do |form| %>
+
+  <div>
+    <%= form.label :feature_id, "Select a Feature:" %>
+    <%= form.collection_select(:feature_id, current_user.features, :id, :service_name, {}, { id: 'feature_id' }) %>
+  </div>
+
+  <div>
+    <%= form.label :csv_file, "Upload your Product CSV file:" %>
+    <%= form.file_field :csv_file %>
+  </div>
+
+  <div>
+    <%= form.submit "Convert" %>
+  </div>
+<% end %>
