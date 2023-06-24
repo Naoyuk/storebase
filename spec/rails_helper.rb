@@ -63,4 +63,7 @@ RSpec.configure do |config|
 
   # Deviseのヘルパーメソッドをリクエストスペックで使用可能にする
   config.include Devise::Test::IntegrationHelpers, type: :request
+
+  # CapybaraでJavaScriptを使えるようにドライバーを使用する
+  Capybara.javascript_driver = :selenium_chrome_headless
 end
