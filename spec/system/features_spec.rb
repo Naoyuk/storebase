@@ -80,8 +80,8 @@ RSpec.describe "Features", type: :system, js: true do
     end
 
     scenario "raise error when a user doesn't choose a Feature with select box" do
-      # ログインユーザーのFeatureが1つでもあるとformのactionにそのidがセットされるので、わざと別のユーザーのFeatureとして作成（Featureの作成自体しなくても可） 
-      feature = FactoryBot.create(:feature, user: another_user)
+      # ログインユーザーのFeatureが1つでもあるとformのactionにそのidがセットされるので、わざと別のユーザーのFeatureとして作成（Featureの作成自体しなくても可）
+      FactoryBot.create(:feature, user: another_user)
       visit converter_path
       attach_file("csv_file", 'spec/fixtures/files/input.csv')
       click_button "Convert"

@@ -24,7 +24,7 @@ RSpec.describe CsvConverter, type: :model do
       end
 
       it 'ヘッダーが正しくコンバートされる' do
-        expect(output.headers).to eq (['handle', 'title', 'price'])
+        expect(output.headers).to eq(['handle', 'title', 'price'])
       end
 
       it '各行の各値が正しくコンバートされる' do
@@ -43,7 +43,7 @@ RSpec.describe CsvConverter, type: :model do
       end
 
       it 'ヘッダーのみのファイルが出力される' do
-        expect(output.headers).to eq (['handle', 'title', 'price'])
+        expect(output.headers).to eq(['handle', 'title', 'price'])
         expect(output.count).to eq(0)
       end
     end
@@ -70,4 +70,3 @@ RSpec.describe CsvConverter, type: :model do
     end
   end
 end
-
