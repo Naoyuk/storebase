@@ -8,4 +8,6 @@ class SiteController < ApplicationController
   def profile; end
 
   def dashboard; end
+
+  def unsubscribe; end
 end
