@@ -1,2 +1,5 @@
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<% flash.each do |message_type, message| %>
+  <div class="mt-2 alert alert-<%= bootstrap_alert(message_type) %> alert-dismissible fade show">
+    <span><%= message %></spen>
+  </div>
+<% end %>
