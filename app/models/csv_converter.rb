@@ -10,7 +10,7 @@ class CsvConverter
   end
 
   def convert_csv(output_file_path)
-    raise 'No input file specified' unless input_file_path.present?
+    raise 'No input file specified' if input_file_path.blank?
     raise 'Error: No such file or directory' unless File.exist?(input_file_path)
     raise 'Error: Permission denied' unless File.readable?(input_file_path)
     raise 'Error: Invalid file format' unless File.extname(input_file_path) == '.csv'
@@ -46,4 +46,3 @@ class CsvConverter
     false
   end
 end
-

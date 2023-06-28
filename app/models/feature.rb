@@ -18,7 +18,5 @@ class Feature < ApplicationRecord
     end
   end
 
-  def service_name
-    service.name
-  end
+  delegate :name, to: :service, prefix: true
 end
