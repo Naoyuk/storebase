@@ -1,7 +1,7 @@
 <header class="p-3 text-bg-orange">
   <div class="container">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-      <%= link_to 'StoreBase', root_path, class: "d-flex align-items-center mb-2 mb-lg-0 me-5 link-body-emphasis text-decoration-none fs-4 text-white" %>
+      <%= link_to image_tag('logo.png', size: "195x30", alt: "Storebase"), root_path, class: "d-flex align-items-center mb-2 mb-lg-0 me-5 link-body-emphasis text-decoration-none fs-4 text-white" %>
 
       <% if user_signed_in? %>
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
@@ -24,6 +24,8 @@
             <li><%= link_to 'Profile', profile_path, class: "dropdown-item" %></li>
             <li><hr class="dropdown-divider"></li>
             <li><%= link_to 'Log out', destroy_user_session_path, data: { turbo_method: :delete }, class: 'dropdown-item' %></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><%= unsubscribe_or_continue %></li>
           </ul>
         </div>
       <% else %>
