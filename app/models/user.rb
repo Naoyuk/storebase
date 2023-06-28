@@ -13,18 +13,18 @@ class User < ApplicationRecord
     update(deleted_at: Time.current)
   end
 
-  # ユーザーのアカウントがアクティブであることを確認する
-  def active_for_authentication?
-    super && !deleted_at
+  # ユーザーが退会のリクエスト済みかどうかを確認する
+  def requested_cancel?
+    !!deleted_at
   end
 
   # キャンセルしたアカウントが30日を超えたかどうかを確認する
   def expired_account?
-    active_for_authentication? && Time.current > deleted_at.since(30.days).end_of_day
+    Time.current > deleted_at.since(30.days).end_of_day if requested_cancel?
   end
 
   # 論理削除したアカウントにメッセージを表示する
   def inactive_message
-    !deleted_at ? super : :deleted_account
+    requested_cancel? ? :deleted_account : super
   end
 end

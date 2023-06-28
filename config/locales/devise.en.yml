@@ -16,7 +16,7 @@ en:
       timeout: "Your session expired. Please sign in again to continue."
       unauthenticated: "You need to sign in or sign up before continuing."
       unconfirmed: "You have to confirm your email address before continuing."
-      deleted_account: "Your account has been successfully cancelled. You can recover it within 30 days. We hope to see you again soon."
+      deleted_account: "Account Canceled. Resubscribe to regain access and restore your previous settings."
     mailer:
       confirmation_instructions:
         subject: "Confirmation instructions"

@@ -1,9 +1,9 @@
-<h2>Your membership has been cancelled.</h2>
+<h2>Cancel your membership</h2>
   <p>
     We're sorry to see you go. Your membership benefits will continue through <%= account_expire_date %>, the end of your current billing cycle. We hope we'll still see you around.<br>
     If you decide to reactivate your membership in the future, you can do so in your settings to restore access to your member-only benefits.
   </p>
-  <%= button_to "退会する(button)", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
+  <%= button_to "Cancel your membership", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
 
 
-  <%= link_to "退会しない", root_path %>
+  <%= link_to "Back", root_path %>

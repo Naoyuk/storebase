@@ -13,14 +13,14 @@ module UserHelper
 
   def account_expire_date
     t = Time.current.since(30.days)
-    (Time.new(t.year, t.month, t.day + 1) - 1).strftime('%B %d, %Y')
+    (Time.zone.local(t.year, t.month, t.day + 1) - 1).in_time_zone.strftime('%B %d, %Y')
   end
 
   def unsubscribe_or_continue
-    if current_user.active_for_authentication?
-      link_to 'Unsubscribe', unsubscribe_path(current_user.id), class: 'dropdown-item'
-    else
+    if current_user.requested_cancel?
       link_to 'Continue Your Membership', unsubscribe_path(current_user.id), class: 'dropdown-item'
+    else
+      link_to 'Unsubscribe', unsubscribe_path(current_user.id), class: 'dropdown-item'
     end
   end
 end

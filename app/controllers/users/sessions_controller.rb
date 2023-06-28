@@ -22,14 +22,16 @@ class Users::SessionsController < Devise::SessionsController
   protected
 
   def reject_user
-    @user = User.find_by(email: params[:user][:email].downcase)
-    if @user
-      if (@user.valid_password?(params[:user][:password]) && (@user.expired_account? == false))
-        flash[:alert] = inactive_message
+    user = User.find_by(email: params[:user][:email].downcase)
+    if user
+      if (user.valid_password?(params[:user][:password]) && (user.expired_account?))
+        sign_out user
+        flash[:alert] = "Account Canceled. Resubscribe to regain access and restore your previous settings."
         redirect_to new_user_session_path
       end
     else
       flash[:alert] = "Invalid Email or password"
+      redirect_to new_user_session_path
     end
   end
   # If you have extra params to permit, append them to the sanitizer.
