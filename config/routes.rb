@@ -24,4 +24,6 @@ Rails.application.routes.draw do
     end
     resources 'mappings'
   end
+
+  resources :services
 end
