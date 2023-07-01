@@ -20,7 +20,7 @@ RSpec.describe "Features", type: :system, js: true do
     feature3 = FactoryBot.create(:feature, user_id: another_user.id)
     feature4 = FactoryBot.create(:feature, user_id: another_user.id)
 
-    visit root_path
+    visit features_path
     expect(page).to have_content feature1.service.platform.name
     expect(page).to have_content feature2.service.platform.name
     expect(page).to have_content feature1.service.name
@@ -31,6 +31,24 @@ RSpec.describe "Features", type: :system, js: true do
     expect(page).not_to have_content feature4.service.name
   end
 
+  scenario 'features are sorted by platforms' do
+    platform1 = FactoryBot.create(:platform)
+    platform2 = FactoryBot.create(:platform)
+    service1_p2 = FactoryBot.create(:service, platform: platform2)
+    service2_p1 = FactoryBot.create(:service, platform: platform1)
+    service3_p1 = FactoryBot.create(:service, platform: platform1)
+    service4_p2 = FactoryBot.create(:service, platform: platform2)
+    FactoryBot.create(:feature, service: service1_p2, user_id: user.id)
+    FactoryBot.create(:feature, service: service2_p1, user_id: user.id)
+    FactoryBot.create(:feature, service: service3_p1, user_id: user.id)
+    FactoryBot.create(:feature, service: service4_p2, user_id: user.id)
+
+    visit features_path
+    expect(page.text).to match %r{#{service2_p1.name}.*#{service3_p1.name}.*#{service1_p2.name}.*#{service4_p2.name}}
+    expect(page.text).not_to match %r{#{service3_p1.name}.*#{service2_p1.name}.*#{service1_p2.name}.*#{service4_p2.name}}
+    expect(page.text).not_to match %r{#{service1_p2.name}.*#{service3_p1.name}.*#{service2_p1.name}.*#{service4_p2.name}}
+  end
+
   scenario 'platform name does not duplicate' do
     platform1 = FactoryBot.create(:platform)
     platform2 = FactoryBot.create(:platform)
@@ -39,7 +57,7 @@ RSpec.describe "Features", type: :system, js: true do
     FactoryBot.create(:feature, service_id: service.id, user_id: user.id)
     FactoryBot.create(:feature, service_id: service.id, user_id: user.id)
 
-    visit root_path
+    visit features_path
     within '#sidebarMenu' do
       expect(page).to have_content(platform1.name, count: 1)
       expect(page).not_to have_content platform2.name

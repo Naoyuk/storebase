@@ -4,4 +4,6 @@ class Service < ApplicationRecord
   has_many :mappings, through: :features
 
   validates :name, presence: true
+
+  scope :order_by_platform, -> { joins(:platform).order('platforms.id ASC, id ASC') }
 end
