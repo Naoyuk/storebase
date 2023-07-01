@@ -2,6 +2,15 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_dashboard_items
 
+  def after_sign_in_path_for(resource)
+    case resource
+    when Admin
+      services_path
+    when User
+      profile_path
+    end
+  end
+
   def set_dashboard_items
     if user_signed_in?
       @dashboard_items = current_user.features.order_by_platform

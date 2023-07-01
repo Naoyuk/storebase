@@ -1,0 +1,14 @@
+<div class="row row-cols-4 py-2 border-top">
+  <div class="col-3 my-auto">
+    <%= service.icon %> <%= service.name %>
+  </div>
+  <div class="col-3 my-auto">
+    <%= service.url %>
+  </div>
+  <div class="col-3 my-auto">
+    <%= service.platform.name %>
+  </div>
+  <div class="col-3 my-auto">
+    <%= link_to 'Edit', edit_service_path(service) %>
+  </div>
+</div>
