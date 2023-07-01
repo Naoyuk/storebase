@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "features#index"
+  root "site#home"
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     get '/unsubscribe', to: 'users/registrations#unsubscribe'
     put '/users/:id/withdrawal', to: 'users/registrations#soft_delete', as: 'soft_delete'
   end
+
+  devise_for :admins
 
   get "site/index"
   get "/home", to: "site#home"
@@ -22,4 +24,6 @@ Rails.application.routes.draw do
     end
     resources 'mappings'
   end
+
+  resources :services
 end
