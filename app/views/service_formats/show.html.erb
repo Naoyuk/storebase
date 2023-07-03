@@ -1,0 +1,28 @@
+<div id="<%= dom_id @service_format %>">
+  <div class="mb-2 my-auto">
+    <strong>Service Name ( Platform Name )</strong><br>
+    <%= @service_format.service.name %> ( <%= @service_format.service.platform.name %> )
+  </div>
+
+  <div class="mb-2 my-auto">
+    <strong>Version</strong><br>
+    <%= @service_format.version %>
+  </div>
+
+  <div class="mb-2 my-auto">
+    <strong>Active</strong><br>
+    <%= @service_format.active %>
+  </div>
+
+  <div class="mb-2 my-auto">
+    <strong>Current</strong><br>
+    <%= @service_format.current %>
+  </div>
+</div>
+
+<div>
+  <%= link_to "Edit this service format", edit_service_format_path(@service_format) %> |
+  <%= link_to "Back to service formats", service_formats_path %>
+
+  <%= button_to "Destroy this service format", @service_format, method: :delete %>
+</div>

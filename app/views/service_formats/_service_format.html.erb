@@ -1,0 +1,21 @@
+<div id="<%= dom_id service_format %>" class="row row-cols-5 py-2 border-top">
+  <div class="col my-auto">
+    <%= "#{service_format.service.name} ( #{service_format.service.platform.name} )" %>
+  </div>
+
+  <div class="col my-auto">
+    <%= service_format.version %>
+  </div>
+
+  <div class="col my-auto">
+    <%= service_format.active %>
+  </div>
+
+  <div class="col my-auto">
+    <%= service_format.current %>
+  </div>
+
+  <div class="col my-auto">
+    <%= link_to "Show", service_format_path(service_format) %>
+  </div>
+</div>

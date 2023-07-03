@@ -1,0 +1,14 @@
+<header class="p-3 text-bg-orange">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <%= link_to image_tag('logo.png', size: "195x30", alt: "Storebase"), root_path, class: "d-flex align-items-center mb-2 mb-lg-0 me-5 link-body-emphasis text-decoration-none fs-4 text-white" %>
+
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><%= link_to 'Platform', '#', class: "nav-link px-2 text-white" %></li>
+        <li><%= link_to 'Service', services_path, class: "nav-link px-2 text-white" %></li>
+        <li><%= link_to 'ServiceFormat', service_formats_path, class: "nav-link px-2 text-white" %></li>
+        <li><%= link_to 'Log out', destroy_admin_session_path, data: { turbo_method: :delete } %></li>
+      </ul>
+    </div>
+  </div>
+</header>

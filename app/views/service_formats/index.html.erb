@@ -1,0 +1,23 @@
+<div class="feature-title">
+  <h1>Service formats</h1>
+</div>
+
+<%= link_to "Add service format", new_service_format_path %><br>
+
+<div class="card shadow mt-3">
+  <div class="card-header">Data Mappings</div>
+
+  <div class="card-body mx-3">
+    <div class="row py-2">
+      <div class="col mt-auto"><strong>Service</strong></div>
+      <div class="col mt-auto"><strong>Version</strong></div>
+      <div class="col mt-auto"><strong>Active</strong></div>
+      <div class="col mt-auto"><strong>Current</strong></div>
+      <div class="col mt-auto"></div>
+    </div>
+
+    <div id='service_formats'>
+      <%= render @service_formats %>
+    </div>
+  </div>
+</div>
