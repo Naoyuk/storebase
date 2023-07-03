@@ -6,21 +6,17 @@ default: &default
 development:
   <<: *default
   database: storebase_development
-  host: <%= Rails.application.credentials.psql_dev[:host] %>
-  port: <%= Rails.application.credentials.psql_dev[:port] %>
-  username: <%= Rails.application.credentials.psql_dev[:username] %>
-  password: <%= Rails.application.credentials.psql_dev[:password] %>
+  username: <%= ENV['DEV_DB_USERNAME'] %>
+  password: <%= ENV['DEV_DB_PASSWORD'] %>
 
 test:
   <<: *default
   database: storebase_test
-  host: <%= Rails.application.credentials.psql_test[:host] %>
-  port: <%= Rails.application.credentials.psql_test[:port] %>
-  username: <%= Rails.application.credentials.psql_test[:username] %>
-  password: <%= Rails.application.credentials.psql_test[:password] %>
+  username: <%= ENV['TEST_DB_USERNAME'] %>
+  password: <%= ENV['TEST_DB_PASSWORD'] %>
 
 production:
   <<: *default
   database: storebase_production
-  username: <%= Rails.application.credentials.psql_prod[:username] %>
-  password: <%= Rails.application.credentials.psql_prod[:password] %>
+  username: <%= ENV['PROD_DB_USERNAME'] %>
+  password: <%= ENV['PROD_DB_PASSWORD'] %>
