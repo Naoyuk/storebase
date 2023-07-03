@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :service_formats
   root "site#home"
 
   devise_for :users, controllers: {
@@ -27,4 +26,6 @@ Rails.application.routes.draw do
   end
 
   resources :services
+  resources :service_cols
+  resources :service_formats
 end

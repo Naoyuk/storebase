@@ -201,7 +201,7 @@ RSpec.describe "/service_formats", type: :request do
           service_format = ServiceFormat.create!(**valid_attributes, service: service)
           patch service_format_url(service_format), params: { service_format: new_attributes }
           service_format.reload
-        expect(service_format.current).to eq false
+          expect(service_format.current).to eq false
         end
 
         it "redirects to the service_format" do
