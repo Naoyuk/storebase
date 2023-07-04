@@ -1,0 +1,45 @@
+<h1>New service format</h1>
+
+<%= form_with(model: @service_format) do |form| %>
+  <% if @service_format.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@service_format.errors.count, "error") %> prohibited this service_format from being saved:</h2>
+
+      <ul>
+        <% @service_format.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.hidden_field :service_id %>
+  </div>
+
+  <div>
+    <%= form.label :version, style: "display: block" %>
+    <%= form.text_field :version %>
+  </div>
+
+  <div>
+    <%= form.label :active, style: "display: block" %>
+    <%= form.check_box :active %>
+  </div>
+
+  <div>
+    <%= form.label :current, style: "display: block" %>
+    <%= form.check_box :current %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<br>
+
+<div>
+  <%= link_to "Back to service formats", service_formats_path(service_id: @service_format.service_id) %>
+
+</div>

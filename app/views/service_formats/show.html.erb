@@ -1,0 +1,41 @@
+<div id="<%= dom_id @service_format %>" class="card shadow mt-3">
+  <div class="card-header">
+    <div class="row py-3">
+      <div class="col my-auto">
+        <strong><%= @service_format.service.name %> ( <%= @service_format.service.platform.name %> )</strong>
+      </div>
+
+      <div class="col my-auto">
+        <strong>Version</strong>: <%= @service_format.version %>
+      </div>
+
+      <div class="col my-auto">
+        <strong>Active</strong>: <%= @service_format.active %>
+      </div>
+
+      <div class="col my-auto">
+        <strong>Current</strong>: <%= @service_format.current %>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-body">
+    <div class="row py-2">
+      <div class="col mt-auto"><strong>Column Name</strong></div>
+      <div class="col mt-auto"><strong>Data Type</strong></div>
+      <div class="col mt-auto"></div>
+    </div>
+
+    <div id='service_cols'>
+      <%= render @service_cols %>
+    </div>
+  </div>
+</div>
+
+<div>
+  <%= link_to "Add Column", new_service_col_path(service_format_id: @service_format.id) %><br >
+  <%= link_to "Edit this service format", edit_service_format_path(@service_format) %><br >
+  <%= link_to "Back to service formats", service_formats_path(service_id: @service_format.service_id) %>
+
+  <%= button_to "Destroy this service format", @service_format, method: :delete %>
+</div>

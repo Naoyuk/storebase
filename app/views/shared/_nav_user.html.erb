@@ -1,0 +1,32 @@
+<header class="p-3 text-bg-orange">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <%= link_to image_tag('logo.png', size: "195x30", alt: "Storebase"), root_path, class: "d-flex align-items-center mb-2 mb-lg-0 me-5 link-body-emphasis text-decoration-none fs-4 text-white" %>
+
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+        <li><%= link_to 'Add Services', '#', class: "nav-link px-2 text-white" %></li>
+        <li><%= link_to 'Set DataFormats', features_path, class: "nav-link px-2 text-white" %></li>
+        <li><%= link_to 'Converter', converter_path, class: "nav-link px-2 text-white" %></li>
+      </ul>
+
+      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+        <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
+      </form>
+
+      <div class="dropdown text-end">
+        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          <%= avatar %>
+        </a>
+        <ul class="dropdown-menu text-small">
+          <li><a class="dropdown-item" href="#">Manage Feature</a></li>
+          <li><a class="dropdown-item" href="#">Settings</a></li>
+          <li><%= link_to 'Profile', profile_path, class: "dropdown-item" %></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><%= link_to 'Log out', destroy_user_session_path, data: { turbo_method: :delete }, class: 'dropdown-item' %></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><%= unsubscribe_or_continue %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,29 @@
+<%= form_with(model: service_col) do |form| %>
+  <% if service_col.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(service_col.errors.count, "error") %> prohibited this service_col from being saved:</h2>
+
+      <ul>
+        <% service_col.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= form.hidden_field :service_format_id %>
+
+  <div>
+    <%= form.label :ec_column, style: "display: block" %>
+    <%= form.text_field :ec_column %>
+  </div>
+
+  <div>
+    <%= form.label :data_type, style: "display: block" %>
+    <%= form.text_field :data_type %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

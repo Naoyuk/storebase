@@ -1,0 +1,10 @@
+<h1>Editing service format</h1>
+
+<%= render "form", service_format: @service_format %>
+
+<br>
+
+<div>
+  <%= link_to "Show this service format", @service_format %> |
+  <%= link_to "Back to service formats", service_formats_path(service_id: @service_format.service_id) %>
+</div>
