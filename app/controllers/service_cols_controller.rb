@@ -1,6 +1,6 @@
 class ServiceColsController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_service_col, only: %i[ show edit update destroy ]
+  before_action :set_service_col, only: %i[show edit update destroy]
 
   # GET /service_cols or /service_cols.json
   def index
@@ -13,7 +13,7 @@ class ServiceColsController < ApplicationController
 
   # GET /service_cols/new
   def new
-    @service_col = ServiceCol.new
+    @service_col = ServiceFormat.find(params[:service_format_id]).service_cols.build
   end
 
   # GET /service_cols/1/edit
@@ -22,11 +22,11 @@ class ServiceColsController < ApplicationController
 
   # POST /service_cols or /service_cols.json
   def create
-    @service_col = ServiceCol.new(service_col_params)
+    @service_col = ServiceFormat.find(params[:service_format_id]).service_cols.build(service_col_params)
 
     respond_to do |format|
       if @service_col.save
-        format.html { redirect_to service_col_url(@service_col), notice: "Service col was successfully created." }
+        format.html { redirect_to service_format_url(@service_col.service_format), notice: "Service col was successfully created." }
         format.json { render :show, status: :created, location: @service_col }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ class ServiceColsController < ApplicationController
   def update
     respond_to do |format|
       if @service_col.update(service_col_params)
-        format.html { redirect_to service_col_url(@service_col), notice: "Service col was successfully updated." }
+        format.html { redirect_to service_format_url(@service_col.service_format), notice: "Service col was successfully updated." }
         format.json { render :show, status: :ok, location: @service_col }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -59,13 +59,12 @@ class ServiceColsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_service_col
-      @service_col = ServiceCol.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def service_col_params
-      params.require(:service_col).permit(:service_format_id, :ec_column, :data_type)
-    end
+  def set_service_col
+    @service_col = ServiceCol.find(params[:id])
+  end
+
+  def service_col_params
+    params.require(:service_col).permit(:service_format_id, :ec_column, :data_type)
+  end
 end

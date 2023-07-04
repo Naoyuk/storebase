@@ -1,8 +1,9 @@
 <div class="feature-title">
-  <h1>Service formats</h1>
+  <h1><%= service_format_title(@service) %></h1>
 </div>
 
-<%= link_to "Add service format", new_service_format_path %><br>
+<%= link_to "Add service format", new_service_format_path(service_id: @service.id) %><br>
+<%= link_to "Back", services_path %><br>
 
 <div class="card shadow mt-3">
   <div class="card-header">Data Mappings</div>

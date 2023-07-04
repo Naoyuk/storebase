@@ -12,7 +12,7 @@ RSpec.describe "/service_formats", type: :request do
       it "renders a successful response" do
         ServiceFormat.create!(**valid_attributes, service: service)
         sign_in admin
-        get service_formats_url
+        get service_formats_url(service_id: service.id)
         expect(response).to be_successful
       end
     end
@@ -71,7 +71,7 @@ RSpec.describe "/service_formats", type: :request do
     context 'when a admin is logged in' do
       it "renders a successful response" do
         sign_in admin
-        get new_service_format_url
+        get new_service_format_url(service_id: service.id)
         expect(response).to be_successful
       end
     end
@@ -139,7 +139,7 @@ RSpec.describe "/service_formats", type: :request do
 
         it "redirects to the created service_format" do
           post service_formats_url, params: { service_format: valid_attributes }
-          expect(response).to redirect_to(service_format_url(ServiceFormat.last))
+          expect(response).to redirect_to(service_formats_url)
         end
       end
 

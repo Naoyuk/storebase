@@ -5,7 +5,7 @@ RSpec.describe "/service_cols", type: :request do
   let(:admin) { FactoryBot.create(:admin) }
   let!(:service_format) { FactoryBot.create(:service_format) }
   let(:valid_attributes) { FactoryBot.attributes_for(:service_col).merge(service_format_id: service_format.id) }
-  let(:invalid_attributes) { FactoryBot.attributes_for(:service_col, service_format_id: nil) }
+  let(:invalid_attributes) { FactoryBot.attributes_for(:service_col, ec_column: nil) }
 
   describe "GET /index" do
     context 'when a admin is logged in' do
@@ -70,8 +70,9 @@ RSpec.describe "/service_cols", type: :request do
   describe "GET /new" do
     context 'when a admin is logged in' do
       it "renders a successful response" do
+        service_format = FactoryBot.create(:service_format)
         sign_in admin
-        get new_service_col_url
+        get new_service_col_url(service_format_id: service_format.id)
         expect(response).to be_successful
       end
     end
@@ -125,6 +126,8 @@ RSpec.describe "/service_cols", type: :request do
   end
 
   describe "POST /create" do
+    let(:service_format) { FactoryBot.create(:service_format) }
+
     context 'when a admin is logged in' do
       before do
         sign_in admin
@@ -133,13 +136,13 @@ RSpec.describe "/service_cols", type: :request do
       context "with valid parameters" do
         it "creates a new ServiceCol" do
           expect {
-            post service_cols_url, params: { service_col: valid_attributes }
+            post service_cols_url, params: { service_col: valid_attributes, service_format_id: service_format.id }
           }.to change(ServiceCol, :count).by(1)
         end
 
         it "redirects to the created service_col" do
-          post service_cols_url, params: { service_col: valid_attributes }
-          expect(response).to redirect_to(service_col_url(ServiceCol.last))
+          post service_cols_url, params: { service_col: valid_attributes, service_format_id: service_format.id }
+          expect(response).to redirect_to(service_format_url(valid_attributes[:service_format_id]))
         end
       end
 
@@ -147,14 +150,13 @@ RSpec.describe "/service_cols", type: :request do
         it "does not create a new ServiceCol" do
           sign_in admin
           expect {
-            post service_cols_url, params: { service_col: invalid_attributes }
+            post service_cols_url, params: { service_col: invalid_attributes, service_format_id: service_format.id }
           }.to change(ServiceCol, :count).by(0)
         end
 
-      
         it "renders a response with 422 status (i.e. to display the 'new' template)" do
           sign_in admin
-          post service_cols_url, params: { service_col: invalid_attributes }
+          post service_cols_url, params: { service_col: invalid_attributes, service_format_id: service_format.id }
           expect(response).to have_http_status(:unprocessable_entity)
         end
       end
@@ -164,13 +166,13 @@ RSpec.describe "/service_cols", type: :request do
       it "does not create a new ServiceCol" do
         sign_in user
         expect {
-          post service_cols_url, params: { service_col: valid_attributes }
+          post service_cols_url, params: { service_col: valid_attributes, service_format_id: service_format.id }
         }.to change(ServiceCol, :count).by(0)
       end
 
       it "redirects to the user log in page" do
         sign_in user
-        post service_cols_url, params: { service_col: valid_attributes }
+        post service_cols_url, params: { service_col: valid_attributes, service_format_id: service_format.id }
         expect(response).to have_http_status(302)
         expect(response).to redirect_to(new_admin_session_url)
       end
@@ -179,12 +181,12 @@ RSpec.describe "/service_cols", type: :request do
     context 'when not logged in' do
       it "does not create a new ServiceCol" do
         expect {
-          post service_cols_url, params: { service_col: valid_attributes }
+          post service_cols_url, params: { service_col: valid_attributes, service_format_id: service_format.id }
         }.to change(ServiceCol, :count).by(0)
       end
 
       it "redirects to the user log in page" do
-        post service_cols_url, params: { service_col: valid_attributes }
+        post service_cols_url, params: { service_col: valid_attributes, service_format_id: service_format.id }
         expect(response).to have_http_status(302)
         expect(response).to redirect_to(new_admin_session_url)
       end
@@ -211,12 +213,12 @@ RSpec.describe "/service_cols", type: :request do
           service_col = ServiceCol.create! valid_attributes
           patch service_col_url(service_col), params: { service_col: new_attributes }
           service_col.reload
-          expect(response).to redirect_to(service_col_url(service_col))
+          expect(response).to redirect_to(service_format_url(service_col.service_format_id))
         end
       end
 
       context "with invalid parameters" do
-        let(:invalid_attributes) { FactoryBot.attributes_for(:service_col).merge(service_format_id: nil) }
+        let(:invalid_attributes) { FactoryBot.attributes_for(:service_col).merge(ec_column: nil) }
 
         it "renders a response with 422 status (i.e. to display the 'edit' template)" do
           service_col = ServiceCol.create! valid_attributes
