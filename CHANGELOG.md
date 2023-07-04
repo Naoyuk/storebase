@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.7.0] - 2023-06-30
+ 
+### Add
+- CRUD views for ServiceCol
+
 ## [0.6.0] - 2023-06-30
  
 ### Add
