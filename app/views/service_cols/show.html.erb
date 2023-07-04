@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @service_col %>
+
+<div>
+  <%= link_to "Edit this service col", edit_service_col_path(@service_col) %> |
+  <%= link_to "Back to service cols", service_cols_path %>
+
+  <%= button_to "Destroy this service col", @service_col, method: :delete %>
+</div>

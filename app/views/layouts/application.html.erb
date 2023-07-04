@@ -12,7 +12,13 @@
   </head>
 
   <body>
-    <%= render 'shared/nav' %>
+    <% if user_signed_in? %>
+      <%= render 'shared/nav_user' %>
+    <% elsif admin_signed_in? %>
+      <%= render 'shared/nav_admin' %>
+    <% else %>
+      <%= render 'shared/nav_guest' %>
+    <% end %>
     <div class="container-fluid">
       <div class="row">
         <% if user_signed_in? %>

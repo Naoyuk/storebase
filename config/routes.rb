@@ -26,4 +26,6 @@ Rails.application.routes.draw do
   end
 
   resources :services
+  resources :service_cols
+  resources :service_formats
 end
