@@ -1,5 +1,6 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+@import '../../../node_modules/bootstrap/scss/bootstrap';
 
 body {
   font-size: .875rem;
@@ -164,4 +165,12 @@ body {
       padding: 5px;
     }
   }
+}
+
+.title-small {
+  font-size: 0.7em;
+}
+
+.service-format-name {
+  color: tomato;
 }

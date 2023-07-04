@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_29_063848) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_03_082246) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -49,6 +49,25 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_29_063848) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "service_cols", force: :cascade do |t|
+    t.bigint "service_format_id", null: false
+    t.string "ec_column"
+    t.integer "data_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["service_format_id"], name: "index_service_cols_on_service_format_id"
+  end
+
+  create_table "service_formats", force: :cascade do |t|
+    t.bigint "service_id", null: false
+    t.string "version"
+    t.boolean "active"
+    t.boolean "current"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["service_id"], name: "index_service_formats_on_service_id"
   end
 
   create_table "services", force: :cascade do |t|
@@ -94,5 +113,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_29_063848) do
   add_foreign_key "features", "services"
   add_foreign_key "features", "users"
   add_foreign_key "mappings", "features"
+  add_foreign_key "service_cols", "service_formats"
+  add_foreign_key "service_formats", "services"
   add_foreign_key "services", "platforms"
 end

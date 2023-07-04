@@ -1,0 +1,12 @@
+<div id="<%= dom_id service_col %>" class="row row-cols-3 py-2 border-top">
+  <div class="col my-auto">
+    <%= service_col.ec_column %>
+  </div>
+  <div class="col my-auto">
+    <%= service_col.data_type %>
+  </div>
+  <div class="col my-auto">
+    <%= link_to 'Edit', edit_service_col_path(service_col) %> | 
+    <%= link_to 'Delete', service_col_path(service_col), data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+  </div>
+</div>

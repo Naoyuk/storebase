@@ -39,3 +39,6 @@ yarn-debug.log*
 
 # Ignore gems
 /vendor
+
+# Ignore .env
+/.env

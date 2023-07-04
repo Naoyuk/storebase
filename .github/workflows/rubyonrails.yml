@@ -1,0 +1,36 @@
+name: "Ruby on Rails CI"
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:14-alpine
+        ports:
+          - "5432:5432"
+        env:
+          POSTGRES_DB: storebase_test
+          POSTGRES_USER: storebase_test
+          POSTGRES_PASSWORD: test
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: "postgres://storebase_test:test@localhost:5432/storebase_test"
+      DB_USERNAME: storebase_test
+      DB_PASSWORD: test
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0
+        with:
+          bundler-cache: true
+      - name: Set up database schema
+        run: bin/rails db:schema:load
+      - name: Precompile assets
+        run: bundle exec rails assets:precompile
+      - name: Run tests
+        run: bin/rake
