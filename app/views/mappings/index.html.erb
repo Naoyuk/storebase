@@ -1,0 +1,20 @@
+<div class="mapping-title">
+  <h1>Mappings</h1>
+</div>
+
+<div class="card shadow mt-3">
+  <div class="card-header">Data Mappings</div>
+
+  <div class="card-body mx-3">
+    <div class="row py-2">
+      <div class="col-3 mt-auto feature-title"><%= "#{@service.name} | #{@service.platform.name}" %></div>
+      <div class="col-3 mt-auto">Data Type</div>
+      <div class="col-3 mt-auto">Source Column Name</div>
+    </div>
+
+    <div id='features'>
+      <%= render @mappings %>
+    </div>
+  </div>
+</div>
+

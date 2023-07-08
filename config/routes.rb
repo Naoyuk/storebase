@@ -22,8 +22,11 @@ Rails.application.routes.draw do
     member do
       post :convert # FeatureControllerのconvertアクションを追加
     end
-    resources 'mappings'
+    resources :mappings
+    resources :versions, only: [:create]
   end
+
+  post '/versions/find_or_create/:service_id', to: 'versions#find_or_create', as: 'find_or_create_version'
 
   resources :services
   resources :service_cols

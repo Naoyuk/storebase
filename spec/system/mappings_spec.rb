@@ -14,18 +14,25 @@ RSpec.describe "Mappings", type: :system do
 
   scenario 'user creates a mapping' do
     feature = FactoryBot.create(:feature, user_id: user.id)
+    service_format = FactoryBot.create(:service_format, service: feature.service)
+    service_col1 = FactoryBot.create(:service_col, service_format: service_format)
+    service_col2 = FactoryBot.create(:service_col, service_format: service_format)
+    service_col3 = FactoryBot.create(:service_col, service_format: service_format)
+    service_col4 = FactoryBot.create(:service_col, service_format: service_format)
 
     visit feature_path(feature)
 
     expect {
-      fill_in 'mapping_user_column', with: 'new user column'
-      fill_in 'mapping_ec_column', with: 'new ec column'
-      select 'String', from: 'mapping_data_type'
-      click_button 'Add'
-    }.to change(Mapping, :count).by(1)
+      click_link 'Show Mappings'
+    }.to change(Mapping, :count).by(4).and change(Version, :count).by(1)
 
-    expect(page).to have_content 'new user column'
-    expect(page).to have_content 'new ec column'
-    expect(page).to have_content 'String'
+    expect(page).to have_content service_col1.ec_column
+    expect(page).to have_content service_col1.data_type
+    expect(page).to have_content service_col2.ec_column
+    expect(page).to have_content service_col2.data_type
+    expect(page).to have_content service_col3.ec_column
+    expect(page).to have_content service_col3.data_type
+    expect(page).to have_content service_col4.ec_column
+    expect(page).to have_content service_col4.data_type
   end
 end

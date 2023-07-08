@@ -6,6 +6,9 @@ RSpec.describe "Features", type: :request do
   let(:service) { FactoryBot.create(:service) }
   let(:feature) { FactoryBot.create(:feature) }
   let(:user_feature) { FactoryBot.create(:feature, user: user) }
+  let(:service_format) { FactoryBot.create(:service_format) }
+  let(:version) { FactoryBot.create(:version, service_format: service_format) }
+  let!(:user_feature_version) { FactoryBot.create(:version, service_format: service_format, feature: user_feature, current: true) }
   let(:valid_attributes) { { service_id: service.id } }
   let(:invalid_attributes) { FactoryBot.attributes_for(:feature, service_id: nil) }
   let(:csv_file) { fixture_file_upload('input.csv', 'text/csv') }
@@ -67,6 +70,7 @@ RSpec.describe "Features", type: :request do
   describe "GET /show" do
     context 'when a user is loggin in' do
       it "returns http success" do
+        version # letで定義したファクトリをここで明示的に呼び出し
         sign_in user
         get feature_path(feature)
         expect(response).to have_http_status(:success)
@@ -243,6 +247,7 @@ RSpec.describe "Features", type: :request do
 
       context 'when the uploaded file and selection of feature are correct' do
         it "converts the uploaded csv file and returns the converted file" do
+          user_feature_version # letで定義したファクトリをここで明示的に呼び出し
           post convert_feature_path(user_feature.id), params: { csv_file: csv_file, feature_id: user_feature.id }
           expect(response).to have_http_status(:success)
         end

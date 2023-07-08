@@ -67,15 +67,18 @@ RSpec.describe "Features", type: :system, js: true do
   scenario 'user can see all mappings in a feature detail page' do
     feature1 = FactoryBot.create(:feature, user_id: user.id)
     feature2 = FactoryBot.create(:feature, user_id: user.id)
-    mapping1 = FactoryBot.create(:mapping, feature_id: feature1.id)
-    mapping2 = FactoryBot.create(:mapping, feature_id: feature2.id)
-    mapping3 = FactoryBot.create(:mapping, feature_id: feature1.id)
+    service_format = FactoryBot.create(:service_format)
+    version1 = FactoryBot.create(:version, service_format: service_format, feature: feature1, current: true)
+    version2 = FactoryBot.create(:version, service_format: service_format, feature: feature2, current: true)
+    mapping1 = FactoryBot.create(:mapping, version: version1)
+    mapping2 = FactoryBot.create(:mapping, version: version2)
+    mapping3 = FactoryBot.create(:mapping, version: version1)
 
-    visit feature_path(feature1)
+    visit feature_mappings_path(feature1.id)
     within '.feature-title' do
-      expect(page).to have_content(mapping1.feature.service.name, count: 1)
-      expect(page).to have_content(mapping3.feature.service.name, count: 1)
-      expect(page).not_to have_content(mapping2.feature.service.name)
+      expect(page).to have_content(mapping1.version.feature.service.name, count: 1)
+      expect(page).to have_content(mapping3.version.feature.service.name, count: 1)
+      expect(page).not_to have_content(mapping2.version.feature.service.name)
     end
 
     expect(page).to have_content(mapping1.user_column)
@@ -89,6 +92,12 @@ RSpec.describe "Features", type: :system, js: true do
   describe "Convert CSV" do
     scenario "converts the uploaded csv file and downloads the converted file" do
       feature = FactoryBot.create(:feature, user: user)
+      service_format = FactoryBot.create(:service_format, service: feature.service)
+      version = Version.create(feature: feature, current: true, service_format: service_format)
+      version.mappings.create(user_column: 'item_number', ec_column: 'Handle')
+      version.mappings.create(user_column: 'item_name', ec_column: 'Title')
+      version.mappings.create(user_column: 'price', ec_column: 'Variant Price')
+
       visit converter_path
       select feature.service_name, from: 'feature_id'
       attach_file("csv_file", 'spec/fixtures/files/input.csv')
