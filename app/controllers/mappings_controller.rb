@@ -1,29 +1,21 @@
 class MappingsController < ApplicationController
   before_action :set_feature
-  before_action :set_features, only: [:index, :show, :edit, :new]
+  before_action :set_features, only: [:show, :edit, :new]
   before_action :set_mapping, only: [:show, :edit, :update, :destroy]
 
   def index
-    @mappings = @feature.mappings
+    @mappings = @feature.current_version.mappings.default_order
+    @service = @feature.service
   end
 
   def new
-    @mapping = Mapping.new
+    @mapping = Mapping.new(version: @feature.current_version)
   end
 
   def show
   end
 
   def edit
-  end
-
-  def create
-    @mapping = @feature.mappings.new(mapping_params)
-    if @mapping.save
-      redirect_to feature_path(@feature)
-    else
-      render :new
-    end
   end
 
   def update
@@ -50,7 +42,7 @@ class MappingsController < ApplicationController
   end
 
   def set_mapping
-    @mapping = @feature.mappings.find(params[:id])
+    @mapping = @feature.current_version.mappings.find(params[:id])
   end
 
   def mapping_params

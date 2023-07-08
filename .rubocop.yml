@@ -34,3 +34,7 @@ Layout/SpaceInsideHashLiteralBraces:
 Layout/HashAlignment:
   Exclude:
     - "spec/**/*_spec.rb"
+
+Rails/LexicallyScopedActionFilter:
+  Exclude:
+    - "app/controllers/users/sessions_controller.rb"
