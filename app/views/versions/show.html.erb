@@ -1,0 +1,23 @@
+<h1>Version: <%= @version.id %> </h1>
+<h2>Service: <%= @version.service_format.service.name %> </h2>
+
+<h3>Mappings:</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>User Column</th>
+      <th>EC Column</th>
+      <th>Data Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @version.mappings.each do |mapping| %>
+      <tr>
+        <td><%= mapping.user_column %></td>
+        <td><%= mapping.ec_column %></td>
+        <td><%= mapping.data_type %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
