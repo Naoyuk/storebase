@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_03_082246) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_06_054151) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -36,13 +36,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_03_082246) do
   end
 
   create_table "mappings", force: :cascade do |t|
-    t.bigint "feature_id", null: false
     t.string "user_column"
     t.string "ec_column"
     t.integer "data_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["feature_id"], name: "index_mappings_on_feature_id"
+    t.bigint "version_id"
+    t.index ["version_id"], name: "index_mappings_on_version_id"
   end
 
   create_table "platforms", force: :cascade do |t|
@@ -110,10 +110,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_03_082246) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "versions", force: :cascade do |t|
+    t.bigint "feature_id", null: false
+    t.boolean "current"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "service_format_id", null: false
+    t.index ["feature_id"], name: "index_versions_on_feature_id"
+    t.index ["service_format_id"], name: "index_versions_on_service_format_id"
+  end
+
   add_foreign_key "features", "services"
   add_foreign_key "features", "users"
-  add_foreign_key "mappings", "features"
+  add_foreign_key "mappings", "versions"
   add_foreign_key "service_cols", "service_formats"
   add_foreign_key "service_formats", "services"
   add_foreign_key "services", "platforms"
+  add_foreign_key "versions", "features"
+  add_foreign_key "versions", "service_formats"
 end

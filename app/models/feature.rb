@@ -1,7 +1,7 @@
 class Feature < ApplicationRecord
   belongs_to :user
   belongs_to :service
-  has_many :mappings, dependent: :destroy
+  has_many :versions, dependent: :destroy
 
   scope :order_by_platform, -> {
     joins(service: :platform).order('platforms.id')
@@ -9,6 +9,7 @@ class Feature < ApplicationRecord
 
   def convert_csv(input_file_path)
     output_file_path = Rails.root.join('tmp', "#{user.id}_output.csv")
+    mappings = current_version.mappings.default_order
     converter = CsvConverter.new(input_file_path, mappings)
     converter.convert_csv(output_file_path)
     if converter.errors.empty?
@@ -17,6 +18,22 @@ class Feature < ApplicationRecord
       [false, converter.errors]
     end
   end
+
+  def current_version
+    versions.find_by(current: true)
+  end
+
+  delegate :mappings, to: :current_version
+
+  # def mappings
+  #   current_version.mappings
+  # end
+
+  delegate :service_formats, to: :service
+
+  # def service_formats
+  #   service.service_formats
+  # end
 
   delegate :name, to: :service, prefix: true
 end

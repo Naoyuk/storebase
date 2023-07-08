@@ -1,0 +1,17 @@
+<div class="row py-2 border-top">
+  <div class="col my-auto">
+    <%= service_format.version %>
+  </div>
+  <div class="col my-auto">
+    <%= service_format.created_at.to_fs(:stamp) %>
+  </div>
+  <div class="col my-auto">
+    <%= service_format.active %>
+  </div>
+  <div class="col my-auto">
+    <%= service_format.current %>
+  </div>
+  <div class="col my-auto">
+    <%= link_to 'Show Mappings', find_or_create_version_path(service_id: service_format.service_id, service_format_id: service_format.id), data: {turbo_method: :post} %>
+  </div>
+</div>
