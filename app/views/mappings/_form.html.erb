@@ -1,0 +1,18 @@
+<%= turbo_frame_tag mapping do %>
+  <%= form_with(model: [mapping.version.feature, mapping], local: true) do |f| %>
+    <div class="row row-cols-4 py-2 border-top">
+      <div class="col-3 my-auto">
+        <%= mapping.ec_column %>
+      </div>
+      <div class="col-3 my-auto">
+        <%= mapping.data_type %>
+      </div>
+      <div class="col-3 my-auto">
+        <%= f.text_field :user_column, class: 'form-control form-control-sm' %>
+      </div>
+      <div class="col-3 my-auto">
+        <%= f.submit 'Update', class: 'btn btn-primary btn-sm me-2' %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
