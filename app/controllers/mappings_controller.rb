@@ -22,7 +22,7 @@ class MappingsController < ApplicationController
     if @mapping.update(mapping_params)
       redirect_to feature_mappings_path(@feature)
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
