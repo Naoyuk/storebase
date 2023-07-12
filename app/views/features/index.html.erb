@@ -1,20 +1,13 @@
-<div>
-  <h1>Features</h1>
+<div class="feature-title">
+  <h1>Services</h1>
 </div>
 
-<%= link_to 'Add Feature', new_feature_path %><br>
+<%= link_to 'Add Services', new_feature_path, class: 'btn btn-sm btn-primary mt-2 ms-2' %><br>
 
 <div class="card shadow mt-3">
-  <div class="card-header">Data Mappings</div>
+  <div class="card-header">Services</div>
 
   <div class="card-body mx-3">
-    <div class="row py-2">
-      <div class="col-3 mt-auto">Service ID</div>
-      <div class="col-3 mt-auto">Service Name</div>
-      <div class="col-3 mt-auto">Platform</div>
-      <div class="col-3 mt-auto"></div>
-    </div>
-
     <div id='features'>
       <%= render @features %>
     </div>
