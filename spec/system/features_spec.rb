@@ -19,7 +19,7 @@ RSpec.describe "Features", type: :system, js: true do
   scenario 'user has own features' do
     service = FactoryBot.create(:service)
     another_service = FactoryBot.create(:another_service)
-    service_format = FactoryBot.create(:service_format, service: service)
+    FactoryBot.create(:service_format, service: service)
     feature1 = FactoryBot.create(:feature, user: user, service: service)
     feature2 = FactoryBot.create(:feature, user: user, service: service)
     feature3 = FactoryBot.create(:feature, user: another_user, service: another_service)
