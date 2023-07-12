@@ -1,16 +1,29 @@
-<%= form_with(url: convert_feature_path(id: 0, format: :csv), method: :post, id: 'csv_convert_form') do |form| %>
+<div class="feature-title">
+  <h1>Convert CSV file</h1>
+</div>
 
-  <div>
-    <%= form.label :feature_id, "Select a Feature:" %>
-    <%= form.collection_select(:feature_id, current_user.features, :id, :service_name, {}, { id: 'feature_id' }) %>
-  </div>
+<div class="p-4">
+  <%= form_with(url: convert_feature_path(id: 0, format: :csv), method: :post, id: 'csv_convert_form') do |form| %>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="form-group py-2">
+          <%= form.label :feature_id, "Select a Feature:", class: 'form-label' %>
+          <%= form.collection_select(:feature_id, current_user.features, :id, :service_name, {}, { class: 'form-control', id: 'feature_id' }) %>
+        </div>
+      </div>
+    </div>
 
-  <div>
-    <%= form.label :csv_file, "Upload your Product CSV file:" %>
-    <%= form.file_field :csv_file %>
-  </div>
+    <div class="row">
+      <div class="form-group py-2">
+        <%= form.label :csv_file, "Upload your Product CSV file:", class: 'form-label' %>
+        <div class="custom-file">
+          <%= form.file_field :csv_file, class: 'custom-file-input', id: 'customFile' %>
+        </div>
+      </div>
+    </div>
 
-  <div>
-    <%= form.submit "Convert" %>
-  </div>
-<% end %>
+    <div class="form-group py-2">
+      <%= form.submit "Convert", class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

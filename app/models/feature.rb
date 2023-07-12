@@ -24,16 +24,18 @@ class Feature < ApplicationRecord
   end
 
   delegate :mappings, to: :current_version
-
   # def mappings
   #   current_version.mappings
   # end
 
   delegate :service_formats, to: :service
-
   # def service_formats
   #   service.service_formats
   # end
+
+  def service_format
+    service_formats.find_by(current: true)
+  end
 
   delegate :name, to: :service, prefix: true
 end
