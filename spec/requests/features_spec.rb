@@ -3,12 +3,6 @@ require 'rails_helper'
 RSpec.describe "Features", type: :request do
   let!(:user) { FactoryBot.create(:user) }
   let(:admin) { FactoryBot.create(:admin) }
-  # let!(:service) { FactoryBot.create(:service) }
-  # let!(:service_format) { FactoryBot.create(:service_format, service: service, current: true) }
-  # let!(:feature) { FactoryBot.create(:feature, service: service, user: user) }
-  # let!(:version) { FactoryBot.create(:version, service_format: service_format, feature: feature) }
-  # let(:valid_attributes) { { service_id: service.id } }
-  # let(:invalid_attributes) { FactoryBot.attributes_for(:feature, service_id: nil) }
   let(:csv_file) { fixture_file_upload('input.csv', 'text/csv') }
 
   describe "GET /index" do
@@ -143,7 +137,7 @@ RSpec.describe "Features", type: :request do
   describe "POST /create" do
     before do
       service = FactoryBot.create(:service)
-      service_format = FactoryBot.create(:service_format, service: service, current: true)
+      FactoryBot.create(:service_format, service: service, current: true)
       @feature = FactoryBot.create(:feature, service: service, user: user)
       @valid_attributes = { service_id: service.id }
       @invalid_attributes = FactoryBot.attributes_for(:feature, service_id: nil)
