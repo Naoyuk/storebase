@@ -1,16 +1,19 @@
 class VersionsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_version, only: %i[update destroy]
+  before_action :set_version, only: %i[edit update destroy]
 
   def index
     @versions = Version.all
   end
 
+  def edit
+  end
+
   def find_or_create
-    version = Version.find_by(service_format_id: params[:service_format_id])
+    service_format = ServiceFormat.find(params[:service_format_id])
+    @feature = Feature.find_by(user_id: current_user.id, service_id: service_format.service_id)
+    version = @feature.versions.find_by(service_format_id: params[:service_format_id], current: true)
     if version.nil?
-      service_format = ServiceFormat.find(params[:service_format_id])
-      @feature = Feature.find_by(user_id: current_user.id, service_id: service_format.service_id)
       @version = @feature.versions.build(current: true, service_format_id: service_format.id)
 
       respond_to do |format|

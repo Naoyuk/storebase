@@ -12,6 +12,9 @@
     <%= service_format.current %>
   </div>
   <div class="col my-auto">
-    <%= link_to 'Show Mappings', find_or_create_version_path(service_id: service_format.service_id, service_format_id: service_format.id), data: {turbo_method: :post} %>
+    <%= @feature.id %>
+    <%= service_format.service_id %>
+    <%= link_to 'Show Mappings', find_or_create_version_path(service_id: service_format.service_id, service_format_id: service_format.id), data: {turbo_method: :post}, class: 'btn btn-sm btn-primary me-3' %>
+    <%= link_to 'Edit', edit_feature_version_path(feature_id: service_format.feature(current_user.id), version_id: service_format.ver(current_user.id)), class: 'btn btn-sm btn-outline-primary' %>
   </div>
 </div>
