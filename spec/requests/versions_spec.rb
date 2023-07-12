@@ -38,28 +38,28 @@ RSpec.describe "/versions", type: :request do
     end
 
     context 'when a version is existed' do
-      service = FactoryBot.create(:service)
-      feature = FactoryBot.create(:feature, service: service)
-      service_format = FactoryBot.create(:service_format, service: service)
-      version = FactoryBot.create(:version, feature: feature, service_format: service_format)
-      FactoryBot.create(:mapping, version: version)
-      FactoryBot.create(:mapping, version: version)
-      FactoryBot.create(:mapping, version: version)
+      before do
+        service = FactoryBot.create(:service)
+        @service_format = FactoryBot.create(:service_format, service: service)
+        feature = FactoryBot.create(:feature, service: service, user: user)
+        version = FactoryBot.create(:version, feature: feature, service_format: @service_format)
+        FactoryBot.create(:mapping, version: version)
+      end
 
       it "doesn't create a version" do
         expect {
-          post find_or_create_version_path(service_id: service_format.service_id, service_format_id: service_format.id)
+          post find_or_create_version_path(service_format_id: @service_format.id)
         }.to change(Version, :count).by(0)
       end
 
       it "doesn't create mappings" do
         expect {
-          post find_or_create_version_path(service_id: service_format.service_id, service_format_id: service_format.id)
+          post find_or_create_version_path(service_format_id: @service_format.id)
         }.to change(Mapping, :count).by(0)
       end
 
       it 'returns https success(renders a mapping list page)' do
-        post find_or_create_version_path(service_id: service_format.service_id, service_format_id: service_format.id)
+        post find_or_create_version_path(service_format_id: @service_format.id)
         expect(response).to have_http_status(302)
       end
     end
