@@ -22,7 +22,12 @@ gem "turbo-rails"
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
-  gem "debug", platforms: %i[mri mingw x64_mingw]
+  gem 'capistrano', '~> 3.17.1'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rails', '~> 1.2'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-yarn'
+  gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'rspec-rails'
 end
