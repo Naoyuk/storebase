@@ -20,7 +20,7 @@ shared_dir = "#{app_dir}/shared"
 pidfile "#{shared_dir}/pids/puma.pid"
 
 # Set state location
-state_path "#{shared_dir}/pids/puma.state"
+state_path "#{shared_dir}/tmp/pids/puma.state"
 
 # Set up socket location
 bind "unix://#{shared_dir}/tmp/sockets/puma.sock"
