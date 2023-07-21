@@ -8,7 +8,7 @@ Storebase is a data integration and cross-platform report generation tool for va
 
 Storebase is built with Ruby on Rails. Here are the main dependencies:
 
-- Ruby 3.1.2
+- Ruby 3.1.4
 - Rails 7
 
 ## Installation
