@@ -1,36 +1,118 @@
 name: "Ruby on Rails CI"
+
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - develop
+      - main
+
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - develop
+
 jobs:
   test:
     runs-on: ubuntu-latest
+
     services:
       postgres:
-        image: postgres:14-alpine
+        image: postgres:15
         ports:
           - "5432:5432"
         env:
           POSTGRES_DB: storebase_test
           POSTGRES_USER: storebase_test
           POSTGRES_PASSWORD: test
+
     env:
       RAILS_ENV: test
       DATABASE_URL: "postgres://storebase_test:test@localhost:5432/storebase_test"
       DB_USERNAME: storebase_test
       DB_PASSWORD: test
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Install Ruby and gems
-        uses: ruby/setup-ruby@55283cc23133118229fd3f97f9336ee23a179fcf # v1.146.0
+        uses: ruby/setup-ruby@v1
         with:
-          bundler-cache: true
-      - name: Set up database schema
-        run: bin/rails db:schema:load
+          - ruby-version: 3.1.4
+          - bundler-cache: true
+
+      - name: Install Node.js
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Cache bundle
+        uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: bundle-v1-${{ hashFiles('Gemfile.lock') }}
+
+      - name: Run bundle install
+        run: |
+          bundle config --local path vendor/bundle
+          bundle config --local without production
+          bundle install
+
+      - name: Cache yarn
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: yarn-v1-${{ hashFiles('yarn.lock') }}
+
       - name: Precompile assets
         run: bundle exec rails assets:precompile
-      - name: Run tests
-        run: bin/rake
+
+      - name: Test with RSpec
+        run: |
+          bundle exec rails db:setup
+          bundle exec rails db:migrate
+          bundle exec rspec
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.event_name == 'push'
+    steps:
+      - name: Checkout code
+      - uses: actions/checkout@v3
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1.4
+
+      - name: Set up Node
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Cache bundle
+        uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: bundle-v1-${{ hashFiles('Gemfile.lock') }}
+
+      - name: Install gems
+        run: |
+          bundle config --local path vendor/bundle
+          bundle config --local without production
+          bundle lock --add-platform ruby
+          bundle install
+
+      - name: Deploy
+        env:
+          SSH_KEY: ${{ secrets.SSH_KEY }}
+          TARGET_HOST: ${{ secrets.TARGET_HOST }}
+        run: |
+          mkdir -p -m 700 ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/app_key
+          chmod 600 ~/.ssh/app_key
+          eval `ssh-agent` && ssh-add ~/.ssh/app_key && ssh-add -l
+          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+            bundle exec cap production deploy
+          else
+            bundle exec cap staging deploy
+          fi
