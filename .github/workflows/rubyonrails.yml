@@ -105,7 +105,7 @@ jobs:
       - name: Deploy
         env:
           SSH_KEY: ${{ secrets.SSH_KEY }}
-          TARGET_HOST: ${{ secrets.TARGET_HOST }}
+          TARGET_HOST: ${{ secrets.TARGET_HOSTNAME }}
         run: |
           mkdir -p -m 700 ~/.ssh
           echo "${{ secrets.SSH_KEY }}" > ~/.ssh/app_key
