@@ -102,10 +102,6 @@ jobs:
           bundle lock --add-platform ruby
           bundle install
 
-      - name: Debug SSH key
-        run: |
-          echo "${{ secrets.SSH_KEY }}" | base64 --decode | md5sum
-
       - name: Deploy
         env:
           SSH_KEY: ${{ secrets.SSH_KEY }}
