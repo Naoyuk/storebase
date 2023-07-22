@@ -1,7 +1,7 @@
 set :stage, :production
 set :rails_env, 'production'
 
-server "191.101.81.240",
+server "storebase.naoyuki-ishida.com",
 user: "storebase",
 roles: %w{app db web},
 ssh_options: {
