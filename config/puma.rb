@@ -17,7 +17,7 @@ app_dir = File.expand_path("../..", __FILE__)
 shared_dir = "#{app_dir}/shared"
 
 # Set PIS location
-pidfile "#{shared_dir}/pids/puma.pid"
+pidfile "#{shared_dir}/tmp/pids/puma.pid"
 
 # Set state location
 state_path "#{shared_dir}/tmp/pids/puma.state"
