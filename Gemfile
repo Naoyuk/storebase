@@ -12,7 +12,8 @@ gem "jbuilder"
 gem "jsbundling-rails"
 gem "mini_magick"
 gem "pg", "~> 1.1"
-gem 'puma', '4.3.12'
+gem "puma", "~> 5.0"
+gem 'puma-daemon', require: false
 gem "rails", "~> 7.0.4", ">= 7.0.4.3"
 gem "redis", "~> 4.0"
 gem 'sassc-rails'
