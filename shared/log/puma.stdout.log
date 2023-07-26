@@ -1,0 +1,364 @@
+=== puma startup: 2023-07-22 00:33:41 -0700 ===
+[68160] WARNING hook before_worker_boot failed with exception (Psych::BadAlias) Unknown alias: default
+[68161] WARNING hook before_worker_boot failed with exception (Psych::BadAlias) Unknown alias: default
+[68156] - Worker 0 (PID: 68160) booted in 0.07s, phase: 0
+[68156] - Worker 1 (PID: 68161) booted in 0.07s, phase: 0
+[68156] - Gracefully shutting down workers...
+[68156] === puma shutdown: 2023-07-22 00:33:45 -0700 ===
+[68156] - Goodbye!
+Exiting
+=== puma startup: 2023-07-22 00:33:48 -0700 ===
+[68214] WARNING hook before_worker_boot failed with exception (Psych::BadAlias) Unknown alias: default
+[68215] WARNING hook before_worker_boot failed with exception (Psych::BadAlias) Unknown alias: default
+[68210] - Worker 0 (PID: 68214) booted in 0.05s, phase: 0
+[68210] - Worker 1 (PID: 68215) booted in 0.05s, phase: 0
+[68210] - Gracefully shutting down workers...
+[68210] === puma shutdown: 2023-07-22 00:34:16 -0700 ===
+[68210] - Goodbye!
+Exiting
+=== puma startup: 2023-07-22 01:06:25 -0700 ===
+[74178] WARNING hook before_worker_boot failed with exception (Psych::BadAlias) Unknown alias: default
+[74177] WARNING hook before_worker_boot failed with exception (Psych::BadAlias) Unknown alias: default
+[74168] - Worker 1 (PID: 74178) booted in 0.05s, phase: 0
+[74168] - Worker 0 (PID: 74177) booted in 0.05s, phase: 0
+[74168] - Gracefully shutting down workers...
+[74168] === puma shutdown: 2023-07-22 01:08:08 -0700 ===
+[74168] - Goodbye!
+Exiting
+=== puma startup: 2023-07-22 01:12:06 -0700 ===
+[74481] WARNING hook before_worker_boot failed with exception (Psych::BadAlias) Unknown alias: default
+[74480] WARNING hook before_worker_boot failed with exception (Psych::BadAlias) Unknown alias: default
+[74476] - Worker 1 (PID: 74481) booted in 0.03s, phase: 0
+[74476] - Worker 0 (PID: 74480) booted in 0.04s, phase: 0
+[74476] - Gracefully shutting down workers...
+[74476] === puma shutdown: 2023-07-22 01:12:41 -0700 ===
+[74476] - Goodbye!
+Exiting
+=== puma startup: 2023-07-22 01:13:42 -0700 ===
+[74737] WARNING hook before_worker_boot failed with exception (Psych::BadAlias) Unknown alias: default
+[74736] WARNING hook before_worker_boot failed with exception (Psych::BadAlias) Unknown alias: default
+[74731] - Worker 0 (PID: 74736) booted in 0.05s, phase: 0
+[74731] - Worker 1 (PID: 74737) booted in 0.05s, phase: 0
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked host: storebase.local
+[74731] - Gracefully shutting down workers...
+[74731] === puma shutdown: 2023-07-22 01:14:58 -0700 ===
+[74731] - Goodbye!
+Exiting
+=== puma startup: 2023-07-22 01:17:36 -0700 ===
+[75175] WARNING hook before_worker_boot failed with exception (Psych::BadAlias) Unknown alias: default
+[75176] WARNING hook before_worker_boot failed with exception (Psych::BadAlias) Unknown alias: default
+[75169] - Worker 0 (PID: 75175) booted in 0.06s, phase: 0
+[75169] - Worker 1 (PID: 75176) booted in 0.05s, phase: 0
+Started GET "/" for 127.0.0.1 at 2023-07-22 01:17:49 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SiteController#home as HTML
+Completed 401 Unauthorized in 5ms (ActiveRecord: 0.0ms | Allocations: 2597)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2023-07-22 01:17:49 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.2ms | Allocations: 816)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 6.3ms | Allocations: 4708)
+  Rendered shared/_nav_guest.html.erb (Duration: 2.4ms | Allocations: 817)
+  Rendered shared/_flash.html.erb (Duration: 0.4ms | Allocations: 167)
+  Rendered layout layouts/application.html.erb (Duration: 144.6ms | Allocations: 50266)
+Completed 200 OK in 309ms (Views: 266.5ms | ActiveRecord: 18.0ms | Allocations: 347283)
+
+
+Started GET "/admins/sign_in" for 127.0.0.1 at 2023-07-22 01:17:55 -0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.0ms | Allocations: 696)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 7.6ms | Allocations: 3979)
+  Rendered shared/_nav_guest.html.erb (Duration: 1.1ms | Allocations: 813)
+  Rendered layout layouts/application.html.erb (Duration: 46.0ms | Allocations: 27599)
+Completed 200 OK in 73ms (Views: 53.8ms | ActiveRecord: 9.4ms | Allocations: 36598)
+
+
+[75169] - Gracefully shutting down workers...
+[75169] === puma shutdown: 2023-07-22 01:17:57 -0700 ===
+[75169] - Goodbye!
+Exiting
+=== puma startup: 2023-07-22 01:28:15 -0700 ===
+[75419] WARNING hook before_worker_boot failed with exception (Psych::BadAlias) Unknown alias: default
+[75414] - Worker 1 (PID: 75419) booted in 0.03s, phase: 0
+[75418] WARNING hook before_worker_boot failed with exception (Psych::BadAlias) Unknown alias: default
+[75414] - Worker 0 (PID: 75418) booted in 0.04s, phase: 0
+Started GET "/admins/sign_in" for 127.0.0.1 at 2023-07-22 01:28:28 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.7ms | Allocations: 696)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 5.6ms | Allocations: 4575)
+  Rendered shared/_nav_guest.html.erb (Duration: 1.1ms | Allocations: 832)
+  Rendered layout layouts/application.html.erb (Duration: 171.1ms | Allocations: 44530)
+Completed 200 OK in 347ms (Views: 325.5ms | ActiveRecord: 13.0ms | Allocations: 332067)
+
+
+Started POST "/admins/sign_in" for 127.0.0.1 at 2023-07-22 01:29:20 -0700
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "admin"=>{"email"=>"admin@naoyuki-ishida.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mAdmin Load (3.4ms)[0m  [1m[34mSELECT "admins".* FROM "admins" WHERE "admins"."email" = $1 ORDER BY "admins"."id" ASC LIMIT $2[0m  [["email", "admin@naoyuki-ishida.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 27ms (ActiveRecord: 14.5ms | Allocations: 3643)
+
+
+Processing by Devise::SessionsController#new as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "admin"=>{"email"=>"admin@naoyuki-ishida.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.1ms | Allocations: 105)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 1356)
+  Rendered shared/_nav_guest.html.erb (Duration: 0.6ms | Allocations: 640)
+  Rendered shared/_flash.html.erb (Duration: 0.5ms | Allocations: 199)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | Allocations: 4969)
+Completed 200 OK in 288ms (Views: 5.6ms | ActiveRecord: 0.0ms | Allocations: 6293)
+
+
+[75414] - Gracefully shutting down workers...
+[75414] === puma shutdown: 2023-07-22 01:29:25 -0700 ===
+[75414] - Goodbye!
+Exiting
+=== puma startup: 2023-07-22 01:29:37 -0700 ===
+[75555] WARNING hook before_worker_boot failed with exception (Psych::BadAlias) Unknown alias: default
+[75556] WARNING hook before_worker_boot failed with exception (Psych::BadAlias) Unknown alias: default
+[75551] - Worker 0 (PID: 75555) booted in 0.04s, phase: 0
+[75551] - Worker 1 (PID: 75556) booted in 0.03s, phase: 0
+Started POST "/admins/sign_in" for 127.0.0.1 at 2023-07-22 01:29:50 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "admin"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mAdmin Load (0.9ms)[0m  [1m[34mSELECT "admins".* FROM "admins" WHERE "admins"."email" = $1 ORDER BY "admins"."id" ASC LIMIT $2[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+Redirected to http://storebase.local/services
+Completed 303 See Other in 409ms (ActiveRecord: 6.2ms | Allocations: 291664)
+
+
+Started GET "/services" for 127.0.0.1 at 2023-07-22 01:29:51 -0700
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ServicesController#index as TURBO_STREAM
+  [1m[36mAdmin Load (0.9ms)[0m  [1m[34mSELECT "admins".* FROM "admins" WHERE "admins"."id" = $1 ORDER BY "admins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering services/index.html.erb within layouts/application
+  [1m[36mService Load (2.8ms)[0m  [1m[34mSELECT "services".* FROM "services" INNER JOIN "platforms" ON "platforms"."id" = "services"."platform_id" ORDER BY platforms.id ASC, id ASC[0m
+  ↳ app/views/services/index.html.erb:19
+  [1m[36mPlatform Load (0.1ms)[0m  [1m[34mSELECT "platforms".* FROM "platforms" WHERE "platforms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/services/_service.html.erb:3
+  [1m[36mCACHE Platform Load (0.0ms)[0m  [1m[34mSELECT "platforms".* FROM "platforms" WHERE "platforms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/services/_service.html.erb:3
+  [1m[36mPlatform Load (0.1ms)[0m  [1m[34mSELECT "platforms".* FROM "platforms" WHERE "platforms"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/services/_service.html.erb:3
+  [1m[36mCACHE Platform Load (0.0ms)[0m  [1m[34mSELECT "platforms".* FROM "platforms" WHERE "platforms"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/services/_service.html.erb:3
+  Rendered collection of services/_service.html.erb [4 times] (Duration: 7.1ms | Allocations: 6529)
+  Rendered services/index.html.erb within layouts/application (Duration: 22.8ms | Allocations: 14663)
+  Rendered shared/_nav_admin.html.erb (Duration: 1.2ms | Allocations: 961)
+  Rendered shared/_flash.html.erb (Duration: 0.3ms | Allocations: 165)
+  Rendered layout layouts/application.html.erb (Duration: 106.7ms | Allocations: 54995)
+Completed 200 OK in 249ms (Views: 97.8ms | ActiveRecord: 17.9ms | Allocations: 346044)
+
+
+Started DELETE "/admins/sign_out" for 127.0.0.1 at 2023-07-22 01:30:43 -0700
+Processing by Devise::SessionsController#destroy as TURBO_STREAM
+  [1m[36mAdmin Load (0.4ms)[0m  [1m[34mSELECT "admins".* FROM "admins" WHERE "admins"."id" = $1 ORDER BY "admins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://storebase.local/
+Completed 303 See Other in 29ms (ActiveRecord: 0.4ms | Allocations: 5279)
+
+
+Started GET "/" for 127.0.0.1 at 2023-07-22 01:30:43 -0700
+Processing by SiteController#home as TURBO_STREAM
+Completed 401 Unauthorized in 0ms (ActiveRecord: 0.0ms | Allocations: 460)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2023-07-22 01:30:43 -0700
+Processing by Users::SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.7ms | Allocations: 809)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 4.6ms | Allocations: 4045)
+  Rendered shared/_nav_guest.html.erb (Duration: 1.0ms | Allocations: 831)
+  Rendered shared/_flash.html.erb (Duration: 0.3ms | Allocations: 167)
+  Rendered layout layouts/application.html.erb (Duration: 27.8ms | Allocations: 28625)
+Completed 200 OK in 44ms (Views: 31.4ms | ActiveRecord: 4.7ms | Allocations: 43449)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2023-07-22 01:31:20 -0700
+Processing by Users::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `set_dashboard_items'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:25:in `reject_user'
+Redirected to http://storebase.local/users/sign_in
+Filter chain halted as :reject_user rendered or redirected
+Completed 302 Found in 7ms (ActiveRecord: 1.7ms | Allocations: 2393)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2023-07-22 01:31:20 -0700
+Processing by Users::SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 167)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 1303)
+  Rendered shared/_nav_guest.html.erb (Duration: 1.0ms | Allocations: 637)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 14)
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | Allocations: 4576)
+Completed 200 OK in 7ms (Views: 6.6ms | ActiveRecord: 0.0ms | Allocations: 5362)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2023-07-22 01:31:28 -0700
+Processing by Users::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `set_dashboard_items'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:25:in `reject_user'
+Redirected to http://storebase.local/users/sign_in
+Filter chain halted as :reject_user rendered or redirected
+Completed 302 Found in 4ms (ActiveRecord: 0.5ms | Allocations: 1756)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2023-07-22 01:31:28 -0700
+Processing by Users::SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.1ms | Allocations: 798)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 7.2ms | Allocations: 4321)
+  Rendered shared/_nav_guest.html.erb (Duration: 0.9ms | Allocations: 801)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 18)
+  Rendered layout layouts/application.html.erb (Duration: 19.8ms | Allocations: 8028)
+Completed 200 OK in 39ms (Views: 22.0ms | ActiveRecord: 6.0ms | Allocations: 22110)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2023-07-22 01:31:52 -0700
+Processing by Users::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `set_dashboard_items'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:25:in `reject_user'
+Redirected to http://storebase.local/users/sign_in
+Filter chain halted as :reject_user rendered or redirected
+Completed 302 Found in 8ms (ActiveRecord: 1.7ms | Allocations: 2773)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2023-07-22 01:31:52 -0700
+Processing by Users::SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.1ms | Allocations: 169)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 1395)
+  Rendered shared/_nav_guest.html.erb (Duration: 0.8ms | Allocations: 645)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 15)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 4803)
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.0ms | Allocations: 5670)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2023-07-22 01:31:57 -0700
+Processing by Users::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `set_dashboard_items'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:25:in `reject_user'
+Redirected to http://storebase.local/users/sign_in
+Filter chain halted as :reject_user rendered or redirected
+Completed 302 Found in 26ms (ActiveRecord: 0.6ms | Allocations: 1760)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2023-07-22 01:31:57 -0700
+Processing by Users::SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 167)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 1.1ms | Allocations: 1286)
+  Rendered shared/_nav_guest.html.erb (Duration: 0.5ms | Allocations: 642)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 14)
+  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 4614)
+Completed 200 OK in 6ms (Views: 4.9ms | ActiveRecord: 0.0ms | Allocations: 5358)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2023-07-22 01:32:02 -0700
+Processing by Users::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `set_dashboard_items'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users/sessions_controller.rb:25:in `reject_user'
+Redirected to http://storebase.local/users/sign_in
+Filter chain halted as :reject_user rendered or redirected
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms | Allocations: 1782)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2023-07-22 01:32:02 -0700
+Processing by Users::SessionsController#new as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.1ms | Allocations: 167)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 1287)
+  Rendered shared/_nav_guest.html.erb (Duration: 0.3ms | Allocations: 639)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 14)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | Allocations: 4584)
+Completed 200 OK in 3ms (Views: 3.1ms | ActiveRecord: 0.0ms | Allocations: 5347)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2023-07-22 01:32:04 -0700
+Processing by Users::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.1ms | Allocations: 167)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 0.9ms | Allocations: 1286)
+  Rendered shared/_nav_guest.html.erb (Duration: 0.4ms | Allocations: 637)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | Allocations: 4484)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.0ms | Allocations: 5205)
+
+
+Started GET "/admins/sign_in" for 127.0.0.1 at 2023-07-22 01:32:08 -0700
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 186)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1657)
+  Rendered shared/_nav_guest.html.erb (Duration: 1.3ms | Allocations: 652)
+  Rendered layout layouts/application.html.erb (Duration: 6.7ms | Allocations: 5059)
+Completed 200 OK in 10ms (Views: 8.1ms | ActiveRecord: 0.0ms | Allocations: 6201)
+
+
+Started POST "/admins/sign_in" for 127.0.0.1 at 2023-07-22 01:32:10 -0700
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "admin"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mAdmin Load (0.4ms)[0m  [1m[34mSELECT "admins".* FROM "admins" WHERE "admins"."email" = $1 ORDER BY "admins"."id" ASC LIMIT $2[0m  [["email", "admin@example.com"], ["LIMIT", 1]]
+Redirected to http://storebase.local/services
+Completed 303 See Other in 275ms (ActiveRecord: 0.4ms | Allocations: 2901)
+
+
+Started GET "/services" for 127.0.0.1 at 2023-07-22 01:32:10 -0700
+Processing by ServicesController#index as TURBO_STREAM
+  [1m[36mAdmin Load (0.2ms)[0m  [1m[34mSELECT "admins".* FROM "admins" WHERE "admins"."id" = $1 ORDER BY "admins"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering services/index.html.erb within layouts/application
+  [1m[36mService Load (0.9ms)[0m  [1m[34mSELECT "services".* FROM "services" INNER JOIN "platforms" ON "platforms"."id" = "services"."platform_id" ORDER BY platforms.id ASC, id ASC[0m
+  ↳ app/views/services/index.html.erb:19
+  [1m[36mPlatform Load (0.1ms)[0m  [1m[34mSELECT "platforms".* FROM "platforms" WHERE "platforms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/services/_service.html.erb:3
+  [1m[36mCACHE Platform Load (0.0ms)[0m  [1m[34mSELECT "platforms".* FROM "platforms" WHERE "platforms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/services/_service.html.erb:3
+  [1m[36mPlatform Load (0.1ms)[0m  [1m[34mSELECT "platforms".* FROM "platforms" WHERE "platforms"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/services/_service.html.erb:3
+  [1m[36mCACHE Platform Load (0.0ms)[0m  [1m[34mSELECT "platforms".* FROM "platforms" WHERE "platforms"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/views/services/_service.html.erb:3
+  Rendered collection of services/_service.html.erb [4 times] (Duration: 5.7ms | Allocations: 6447)
+  Rendered services/index.html.erb within layouts/application (Duration: 17.4ms | Allocations: 14310)
+  Rendered shared/_nav_admin.html.erb (Duration: 0.7ms | Allocations: 962)
+  Rendered shared/_flash.html.erb (Duration: 0.0ms | Allocations: 16)
+  Rendered layout layouts/application.html.erb (Duration: 19.9ms | Allocations: 18236)
+Completed 200 OK in 23ms (Views: 14.6ms | ActiveRecord: 6.5ms | Allocations: 20994)
+
+
+[75551] - Gracefully shutting down workers...
+[75551] === puma shutdown: 2023-07-22 01:37:44 -0700 ===
+[75551] - Goodbye!
+Exiting

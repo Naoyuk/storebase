@@ -18,6 +18,7 @@ require "capistrano/rails/migrations"
 # capistrano-puma
 require "capistrano/puma"
 install_plugin Capistrano::Puma
+install_plugin Capistrano::Puma::Daemon
 install_plugin Capistrano::Puma::Nginx
 
 # capistrano-yarn
