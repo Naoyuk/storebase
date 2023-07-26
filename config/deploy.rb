@@ -7,7 +7,7 @@ set :repo_url, 'git@github.com:Naoyuk/storebase.git'
 set :branch, 'main'
 set :deploy_to, "/home/storebase/#{fetch(:application)}"
 set :linked_files, %w(.env config/master.key)
-set :linked_dirs, %w('log' 'tmp/pids' 'tmp/cache' 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads', 'public/packs', 'node_modules')
+set :linked_dirs, %w(log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads public/packs node_modules)
 set :keep_releases, 5
 
 # capistrano-rails
