@@ -20,7 +20,8 @@ RSpec.describe "Mappings", type: :system do
       visit feature_path(feature)
     end
 
-    scenario 'user creates a mapping' do
+    # These 2 specs are turned off because Chromedriver ver.115 is not found yet.
+    xscenario 'user creates a mapping' do
       expect {
         click_link 'Show Mappings'
       }.to change(Mapping, :count).by(4).and change(Version, :count).by(1)
@@ -35,7 +36,7 @@ RSpec.describe "Mappings", type: :system do
       expect(page).to have_content service_col4.data_type
     end
 
-    scenario 'user edits and updates a mapping' do
+    xscenario 'user edits and updates a mapping' do
       click_link 'Show Mappings'
 
       within "#mapping_#{feature.versions.last.mappings.first.id}" do

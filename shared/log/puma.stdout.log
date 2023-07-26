@@ -97036,3 +97036,30 @@ Exiting
 [76631] - Gracefully shutting down workers...
 [76631] === puma shutdown: 2023-07-26 09:19:20 -0700 ===
 [76631] - Goodbye!
+=== puma startup: 2023-07-26 09:26:13 -0700 ===
+[77439] WARNING hook before_worker_boot failed with exception (Psych::BadAlias) Unknown alias: default
+[77440] WARNING hook before_worker_boot failed with exception (Psych::BadAlias) Unknown alias: default
+[77437] - Worker 1 (PID: 77440) booted in 1.32s, phase: 0
+[77437] - Worker 0 (PID: 77439) booted in 1.32s, phase: 0
+[77561] WARNING hook before_worker_boot failed with exception (Psych::BadAlias) Unknown alias: default
+[77437] - Worker 1 (PID: 77561) booted in 1.14s, phase: 0
+[77437] === puma shutdown: 2023-07-26 09:27:09 -0700 ===
+[77437] - Goodbye!
+[77437] - Gracefully shutting down workers...
+=== puma startup: 2023-07-26 09:27:34 -0700 ===
+[77623] WARNING hook before_worker_boot failed with exception (Psych::BadAlias) Unknown alias: default
+[77622] WARNING hook before_worker_boot failed with exception (Psych::BadAlias) Unknown alias: default
+[77620] - Worker 0 (PID: 77622) booted in 1.26s, phase: 0
+[77620] - Worker 1 (PID: 77623) booted in 1.26s, phase: 0
+[77620] === puma shutdown: 2023-07-26 09:27:49 -0700 ===
+[77620] - Goodbye!
+[77620] - Gracefully shutting down workers...
+=== puma startup: 2023-07-26 09:28:08 -0700 ===
+[77722] WARNING hook before_worker_boot failed with exception (Psych::BadAlias) Unknown alias: default
+[77723] WARNING hook before_worker_boot failed with exception (Psych::BadAlias) Unknown alias: default
+[77721] - Worker 0 (PID: 77722) booted in 0.04s, phase: 0
+[77721] - Worker 1 (PID: 77723) booted in 0.04s, phase: 0
+[77721] === puma shutdown: 2023-07-26 09:29:07 -0700 ===
+[77721] - Goodbye!
+[77721] - Gracefully shutting down workers...
+Exiting
