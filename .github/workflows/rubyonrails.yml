@@ -1,12 +1,11 @@
 name: "Ruby on Rails CI"
 
 on:
+  pull_request:
   push:
     branches:
       - develop
       - main
-
-  pull_request:
 
 jobs:
   test:
