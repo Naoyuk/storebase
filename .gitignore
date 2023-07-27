@@ -13,7 +13,7 @@
 !/tmp/pids/.keep
 
 # Ignore shared files in development.
-/shared/
+/shared/**
 
 # Ignore uploaded files in development.
 /storage/*
