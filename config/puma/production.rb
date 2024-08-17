@@ -1,3 +1,5 @@
+require 'puma/daemon'
+
 # Number of worker depends on CPU core count
 # If you use WEB_CONCURRENCY environmental variable(if env var is not set, default is 2)
 # workers ENV.fetch("WEB_CONCURRENCY") { 2 }
@@ -33,3 +35,5 @@ on_worker_boot do
   ActiveRecord::Base.connection.disconnect! rescue ActiveRecord::ConnectionNotEstablished
   ActiveRecord::Base.establish_connection(YAML.load_file("#{app_dir}/config/database.yml")[rails_env])
 end
+
+daemonize
