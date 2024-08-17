@@ -46,5 +46,4 @@ group :test do
   gem 'capybara-screenshot'
   gem 'selenium-webdriver'
   gem 'simplecov'
-  gem 'webdrivers'
 end
